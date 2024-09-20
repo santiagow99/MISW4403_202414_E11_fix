@@ -1,13 +1,13 @@
 {
 	"info": {
-		"_postman_id": "ad32b52f-4ede-42f7-831c-8b4639649027",
+		"_postman_id": "42215459-7623-4a5a-8f76-16a6b6ccd949",
 		"name": "CulturaGastronomica",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "27916063"
 	},
 	"item": [
 		{
-			"name": "CulturaGastronomica",
+			"name": "Cultura",
 			"item": [
 				{
 					"name": "CulturaGastronomica-Recetas",
@@ -2035,12 +2035,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{baseUrl}}/cultura-gastronomica",
+							"raw": "{{baseUrl}}/culturas",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
-								"cultura-gastronomica"
+								"culturas"
 							]
 						}
 					},
@@ -2108,12 +2108,12 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "{{baseUrl}}/cultura-gastronomica",
+							"raw": "{{baseUrl}}/culturas",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
-								"cultura-gastronomica"
+								"culturas"
 							]
 						}
 					},
@@ -2169,12 +2169,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{baseUrl}}/cultura-gastronomica/{{culturaId}}",
+							"raw": "{{baseUrl}}/culturas/{{culturaId}}",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
-								"cultura-gastronomica",
+								"culturas",
 								"{{culturaId}}"
 							]
 						}
@@ -2214,6 +2214,25 @@
 				},
 				{
 					"name": "Get an invalid cultura",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"   pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Get expected error message\", function () {\r",
+									"   var data = pm.response.json();\r",
+									"   pm.expect(data.message).to.eql(\"The culture with the given id was not found\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -2263,6 +2282,20 @@
 				},
 				{
 					"name": "Update a cultura",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"   pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "PUT",
 						"header": [],
@@ -2276,13 +2309,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{baseUrl}}/culturas/{{cultura_id}}",
+							"raw": "{{baseUrl}}/culturas/{{culturaId}}",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
 								"culturas",
-								"{{cultura_id}}"
+								"{{culturaId}}"
 							]
 						}
 					},
@@ -2330,6 +2363,25 @@
 				},
 				{
 					"name": "Update an invalid cultura",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"   pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Get expected error message\", function () {\r",
+									"   var data = pm.response.json();\r",
+									"   pm.expect(data.message).to.eql(\"The culture with the given id was not found\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "PUT",
 						"header": [],
@@ -2397,17 +2449,31 @@
 				},
 				{
 					"name": "Delete a cultura",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 204\", function () {\r",
+									"   pm.response.to.have.status(204);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{baseUrl}}/culturas/{{cultura_id}}",
+							"raw": "{{baseUrl}}/culturas/{{culturaId}}",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
 								"culturas",
-								"{{cultura_id}}"
+								"{{culturaId}}"
 							]
 						}
 					},
@@ -2439,6 +2505,25 @@
 				},
 				{
 					"name": "Delete an invalid cultura",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"   pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Get expected error message\", function () {\r",
+									"   var data = pm.response.json();\r",
+									"   pm.expect(data.message).to.eql('The culture with the given id was not found');\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "DELETE",
 						"header": [],
@@ -2492,7 +2577,816 @@
 			"name": "Categoria",
 			"item": [
 				{
+					"name": "categoria-producto",
+					"item": [
+						{
+							"name": "Add a Categoría",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var data = pm.response.json();\r",
+											"pm.globals.set(\"categoriaId\", data.id);\r",
+											"\r",
+											"pm.test(\"Status code is 201\", function () {\r",
+											"    pm.response.to.have.status(201);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"nombre\": \"Vegetales\",\r\n    \"codigo\": \"123-456-789\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/categorias",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"categorias"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Add a Producto",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var data = pm.response.json();\r",
+											"pm.globals.set(\"productoId\", data.id);\r",
+											"\r",
+											"pm.test(\"Status code is 201\", function () {\r",
+											"    pm.response.to.have.status(201);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"nombre\": \"Venus de Milo de Jalea\",\r\n    \"historia\": \"Homero ve este caramelo en la Feria industrial del Dulce y, luego de que Marge tirara accidentalmente sus caramelos al piso, la roba. Al llegar a la casa, la Venus de Milo se pierde entre los demas dulces, pero luego resulta que se había pegado en los pantalones de Ashley Grant, la niñera. La chica piensa que Homero, al sacarla, trató de abusarla sexualmente, pero luego ve que Homero solo quiso el dulce y lo perdona.\",\r\n    \"descripcion\": \"Es la jalea más rara de todas, esculpida por artesanos de jalea, exclusivos del medio de la jalea\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/productos",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"productos"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Add a producto to a categoria",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {\r",
+											"   pm.response.to.have.status(201);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/categoria-producto/{{categoriaId}}/productos/{{productoId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"categoria-producto",
+										"{{categoriaId}}",
+										"productos",
+										"{{productoId}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Add an invalid producto to a categoria",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"   pm.response.to.have.status(404);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Get expected error message\", function () {\r",
+											"   var data = pm.response.json();\r",
+											"   pm.expect(data.message).to.eql(\"The product with the given id was not found\");\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/categoria-producto/{{categoriaId}}/productos/00000000-0000-0000-0000-000000000000",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"categoria-producto",
+										"{{categoriaId}}",
+										"productos",
+										"00000000-0000-0000-0000-000000000000"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Add a producto to an invalid categoria",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"   pm.response.to.have.status(404);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Get expected error message\", function () {\r",
+											"   var data = pm.response.json();\r",
+											"   pm.expect(data.message).to.eql(\"The category with the given id was not found\");\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/categoria-producto/00000000-0000-0000-0000-000000000000/productos/{{productoId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"categoria-producto",
+										"00000000-0000-0000-0000-000000000000",
+										"productos",
+										"{{productoId}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get a producto of a categoria",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"   pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/categoria-producto/{{categoriaId}}/productos/{{productoId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"categoria-producto",
+										"{{categoriaId}}",
+										"productos",
+										"{{productoId}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get an invalid producto of a categoria",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"   pm.response.to.have.status(404);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Get expected error message\", function () {\r",
+											"   var data = pm.response.json();\r",
+											"   pm.expect(data.message).to.eql(\"The product with the given id was not found\");\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/categoria-producto/{{categoriaId}}/productos/00000000-0000-0000-0000-000000000000",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"categoria-producto",
+										"{{categoriaId}}",
+										"productos",
+										"00000000-0000-0000-0000-000000000000"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get a producto of an invalid categoria",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"   pm.response.to.have.status(404);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Get expected error message\", function () {\r",
+											"   var data = pm.response.json();\r",
+											"   pm.expect(data.message).to.eql(\"The category with the given id was not found\");\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/categoria-producto/00000000-0000-0000-0000-000000000000/productos/{{productoId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"categoria-producto",
+										"00000000-0000-0000-0000-000000000000",
+										"productos",
+										"{{productoId}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Add a Producto 2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var data = pm.response.json();\r",
+											"pm.globals.set(\"productoId2\", data.id);\r",
+											"\r",
+											"pm.test(\"Status code is 201\", function () {\r",
+											"    pm.response.to.have.status(201);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"nombre\": \"Venus de Milo de Jalea\",\r\n    \"historia\": \"Homero ve este caramelo en la Feria industrial del Dulce y, luego de que Marge tirara accidentalmente sus caramelos al piso, la roba. Al llegar a la casa, la Venus de Milo se pierde entre los demas dulces, pero luego resulta que se había pegado en los pantalones de Ashley Grant, la niñera. La chica piensa que Homero, al sacarla, trató de abusarla sexualmente, pero luego ve que Homero solo quiso el dulce y lo perdona.\",\r\n    \"descripcion\": \"Es la jalea más rara de todas, esculpida por artesanos de jalea, exclusivos del medio de la jalea\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/productos",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"productos"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get a producto non-associated to a categoria",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 412\", function () {\r",
+											"   pm.response.to.have.status(412);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Get expected error message\", function () {\r",
+											"   var data = pm.response.json();\r",
+											"   pm.expect(data.message).to.eql(\"The product with the given id is not associated with the category\");\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/categoria-producto/{{categoriaId}}/productos/{{productoId2}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"categoria-producto",
+										"{{categoriaId}}",
+										"productos",
+										"{{productoId2}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get all productos of a categoria",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"   pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/categoria-producto/{{categoriaId}}/productos",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"categoria-producto",
+										"{{categoriaId}}",
+										"productos"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get all productos of an invalid categoria",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"   pm.response.to.have.status(404);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Get expected error message\", function () {\r",
+											"   var data = pm.response.json();\r",
+											"   pm.expect(data.message).to.eql(\"The category with the given id was not found\");\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/categoria-producto/00000000-0000-0000-0000-000000000000/productos",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"categoria-producto",
+										"00000000-0000-0000-0000-000000000000",
+										"productos"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update productos of a categoria",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {\r",
+											"   pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "[\r\n    {\r\n        \"nombre\": \"Venus de Milo de Jalea\",\r\n        \"historia\": \"Homero ve este caramelo en la Feria industrial del Dulce y, luego de que Marge tirara accidentalmente sus caramelos al piso, la roba. Al llegar a la casa, la Venus de Milo se pierde entre los demas dulces, pero luego resulta que se había pegado en los pantalones de Ashley Grant, la niñera. La chica piensa que Homero, al sacarla, trató de abusarla sexualmente, pero luego ve que Homero solo quiso el dulce y lo perdona.\",\r\n        \"descripcion\": \"Es la jalea más rara de todas, esculpida por artesanos de jalea, exclusivos del medio de la jalea\"\r\n    },\r\n    {\r\n        \"nombre\": \"Venus de Milo\",\r\n        \"historia\": \"Homero ve este caramelo en la Feria industrial del Dulce y, luego de que Marge tirara accidentalmente sus caramelos al piso, la roba. Al llegar a la casa, la Venus de Milo se pierde entre los demas dulces, pero luego resulta que se había pegado en los pantalones de Ashley Grant, la niñera. La chica piensa que Homero, al sacarla, trató de abusarla sexualmente, pero luego ve que Homero solo quiso el dulce y lo perdona.\",\r\n        \"descripcion\": \"Es la jalea más rara de todas, esculpida por artesanos de jalea, exclusivos del medio de la jalea\"\r\n    }\r\n]",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/categoria-producto/{{categoriaId}}/productos/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"categoria-producto",
+										"{{categoriaId}}",
+										"productos",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update invalid productos of a categoria",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"   pm.response.to.have.status(404);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Get expected error message\", function () {\r",
+											"   var data = pm.response.json();\r",
+											"   pm.expect(data.message).to.eql(\"The product with the given id was not found\");\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "[\r\n{\r\n    \"id\": \"00000000-0000-0000-0000-000000000000\"\r\n},\r\n{\r\n    \"id\": \"00000000-0000-0000-0000-000000000000\"\r\n}\r\n]",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/categoria-producto/{{categoriaId}}/productos/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"categoria-producto",
+										"{{categoriaId}}",
+										"productos",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update productos of an invalid categoria",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"   pm.response.to.have.status(404);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Get expected error message\", function () {\r",
+											"   var data = pm.response.json();\r",
+											"   pm.expect(data.message).to.eql(\"The category with the given id was not found\");\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "[\r\n    {\r\n        \"nombre\": \"Venus de Milo de Jalea\",\r\n        \"historia\": \"Homero ve este caramelo en la Feria industrial del Dulce y, luego de que Marge tirara accidentalmente sus caramelos al piso, la roba. Al llegar a la casa, la Venus de Milo se pierde entre los demas dulces, pero luego resulta que se había pegado en los pantalones de Ashley Grant, la niñera. La chica piensa que Homero, al sacarla, trató de abusarla sexualmente, pero luego ve que Homero solo quiso el dulce y lo perdona.\",\r\n        \"descripcion\": \"Es la jalea más rara de todas, esculpida por artesanos de jalea, exclusivos del medio de la jalea\"\r\n    },\r\n    {\r\n        \"nombre\": \"Venus de Milo\",\r\n        \"historia\": \"Homero ve este caramelo en la Feria industrial del Dulce y, luego de que Marge tirara accidentalmente sus caramelos al piso, la roba. Al llegar a la casa, la Venus de Milo se pierde entre los demas dulces, pero luego resulta que se había pegado en los pantalones de Ashley Grant, la niñera. La chica piensa que Homero, al sacarla, trató de abusarla sexualmente, pero luego ve que Homero solo quiso el dulce y lo perdona.\",\r\n        \"descripcion\": \"Es la jalea más rara de todas, esculpida por artesanos de jalea, exclusivos del medio de la jalea\"\r\n    }\r\n]",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/categoria-producto/00000000-0000-0000-0000-000000000000/productos/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"categoria-producto",
+										"00000000-0000-0000-0000-000000000000",
+										"productos",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Add a producto to a categoria 2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {\r",
+											"   pm.response.to.have.status(201);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/categoria-producto/{{categoriaId}}/productos/{{productoId2}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"categoria-producto",
+										"{{categoriaId}}",
+										"productos",
+										"{{productoId2}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete a producto of a categoria",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 204\", function () {\r",
+											"   pm.response.to.have.status(204);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/categoria-producto/{{categoriaId}}/productos/{{productoId2}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"categoria-producto",
+										"{{categoriaId}}",
+										"productos",
+										"{{productoId2}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete a producto of an invalid categoria",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"   pm.response.to.have.status(404);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Get expected error message\", function () {\r",
+											"   var data = pm.response.json();\r",
+											"   pm.expect(data.message).to.eql(\"The category with the given id was not found\");\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/categoria-producto/00000000-0000-0000-0000-000000000000/productos/{{productoId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"categoria-producto",
+										"00000000-0000-0000-0000-000000000000",
+										"productos",
+										"{{productoId}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete an invalid producto of a categoria",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"   pm.response.to.have.status(404);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Get expected error message\", function () {\r",
+											"   var data = pm.response.json();\r",
+											"   pm.expect(data.message).to.eql(\"The product with the given id was not found\");\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/categoria-producto/{{categoriaId}}/productos/00000000-0000-0000-0000-000000000000",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"categoria-producto",
+										"{{categoriaId}}",
+										"productos",
+										"00000000-0000-0000-0000-000000000000"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete a producto non-associated to a categoria",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 412\", function () {\r",
+											"   pm.response.to.have.status(412);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Get expected error message\", function () {\r",
+											"   var data = pm.response.json();\r",
+											"   pm.expect(data.message).to.eql(\"The product with the given id is not associated with the category\");\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/categoria-producto/{{categoriaId}}/productos/{{productoId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"categoria-producto",
+										"{{categoriaId}}",
+										"productos",
+										"{{productoId}}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
 					"name": "Add a Categoría",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var data = pm.response.json();\r",
+									"pm.globals.set(\"categoriaId\", data.id);\r",
+									"\r",
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -2558,6 +3452,25 @@
 				},
 				{
 					"name": "Get all Categorías",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Number of categorias > ' + 0, function () {\r",
+									"   var data = pm.response.json()\r",
+									"   pm.expect(data.length).to.greaterThan(0)\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"   pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -2605,17 +3518,31 @@
 				},
 				{
 					"name": "Get one Categoría",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"   pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{baseUrl}}/categorias/{{categorias_id}}",
+							"raw": "{{baseUrl}}/categorias/{{categoriaId}}",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
 								"categorias",
-								"{{categorias_id}}"
+								"{{categoriaId}}"
 							]
 						}
 					},
@@ -2654,6 +3581,25 @@
 				},
 				{
 					"name": "Get an invalid Categoría",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"   pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Get expected error message\", function () {\r",
+									"   var data = pm.response.json();\r",
+									"   pm.expect(data.message).to.eql(\"The category with the given id was not found\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -2703,6 +3649,20 @@
 				},
 				{
 					"name": "Update a Categoría",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"   pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "PUT",
 						"header": [],
@@ -2716,13 +3676,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{baseUrl}}/categorias/{{categorias_id}}",
+							"raw": "{{baseUrl}}/categorias/{{categoriaId}}",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
 								"categorias",
-								"{{categorias_id}}"
+								"{{categoriaId}}"
 							]
 						}
 					},
@@ -2770,6 +3730,25 @@
 				},
 				{
 					"name": "Update an invalid Categoría",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"   pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Get expected error message\", function () {\r",
+									"   var data = pm.response.json();\r",
+									"   pm.expect(data.message).to.eql(\"The category with the given id was not found\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "PUT",
 						"header": [],
@@ -2837,17 +3816,31 @@
 				},
 				{
 					"name": "Delete a Categoría",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 204\", function () {\r",
+									"   pm.response.to.have.status(204);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{baseUrl}}/categorias/{{categorias_id}}",
+							"raw": "{{baseUrl}}/categorias/{{categoriaId}}",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
 								"categorias",
-								"{{categorias_id}}"
+								"{{categoriaId}}"
 							]
 						}
 					},
@@ -2879,6 +3872,25 @@
 				},
 				{
 					"name": "Delete an invalid Categoría",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"   pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Get expected error message\", function () {\r",
+									"   var data = pm.response.json();\r",
+									"   pm.expect(data.message).to.eql('The category with the given id was not found');\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "DELETE",
 						"header": [],
@@ -2933,12 +3945,29 @@
 			"item": [
 				{
 					"name": "Add a Producto",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var data = pm.response.json();\r",
+									"pm.globals.set(\"productoId\", data.id);\r",
+									"\r",
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"nombre\": \"Venus de Milo de Jalea\",\r\n    \"historia\": \"Homero ve este caramelo en la Feria industrial del Dulce y, luego de que Marge tirara accidentalmente sus caramelos al piso, la roba. Al llegar a la casa, la Venus de Milo se pierde entre los demas dulces, pero luego resulta que se había pegado en los pantalones de Ashley Grant, la niñera. La chica piensa que Homero, al sacarla, trató de abusarla sexualmente, pero luego ve que Homero solo quiso el dulce y lo perdona.\",\r\n    \"descripcion\": \"Es la jalea más rara de todas, esculpida por artesanos de jalea, exclusivos del medio de la jalea\",\r\n    \"categoria\": \"2c6ed051-c111-4e4d-8eaa-0dda985efa1c\"\r\n}",
+							"raw": "{\r\n    \"nombre\": \"Venus de Milo de Jalea\",\r\n    \"historia\": \"Homero ve este caramelo en la Feria industrial del Dulce y, luego de que Marge tirara accidentalmente sus caramelos al piso, la roba. Al llegar a la casa, la Venus de Milo se pierde entre los demas dulces, pero luego resulta que se había pegado en los pantalones de Ashley Grant, la niñera. La chica piensa que Homero, al sacarla, trató de abusarla sexualmente, pero luego ve que Homero solo quiso el dulce y lo perdona.\",\r\n    \"descripcion\": \"Es la jalea más rara de todas, esculpida por artesanos de jalea, exclusivos del medio de la jalea\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -2998,6 +4027,25 @@
 				},
 				{
 					"name": "Get all Producto",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Number of productos > ' + 0, function () {\r",
+									"   var data = pm.response.json()\r",
+									"   pm.expect(data.length).to.greaterThan(0)\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"   pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -3045,17 +4093,31 @@
 				},
 				{
 					"name": "Get one Producto",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"   pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{baseUrl}}/productos/{{productos_id}}",
+							"raw": "{{baseUrl}}/productos/{{productoId}}",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
 								"productos",
-								"{{productos_id}}"
+								"{{productoId}}"
 							]
 						}
 					},
@@ -3094,6 +4156,25 @@
 				},
 				{
 					"name": "Get an invalid Producto",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"   pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Get expected error message\", function () {\r",
+									"   var data = pm.response.json();\r",
+									"   pm.expect(data.message).to.eql(\"The product with the given id was not found\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -3143,12 +4224,26 @@
 				},
 				{
 					"name": "Update a Producto",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"   pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "PUT",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"nombre\": \"Venus de Milo de Jalea\",\r\n    \"historia\": \"Homero ve este caramelo en la Feria industrial del Dulce y, luego de que Marge tirara accidentalmente sus caramelos al piso, la roba. Al llegar a la casa, la Venus de Milo se pierde entre los demas dulces, pero luego resulta que se había pegado en los pantalones de Ashley Grant, la niñera. La chica piensa que Homero, al sacarla, trató de abusarla sexualmente, pero luego ve que Homero solo quiso el dulce y lo perdona.\",\r\n    \"descripcion\": \"Es la jalea más rara de todas, esculpida por artesanos de jalea, exclusivos del medio de la jalea\",\r\n    \"categoria\": \"2c6ed051-c111-4e4d-8eaa-0dda985efa1c\"\r\n}",
+							"raw": "{\r\n    \"nombre\": \"Venus de Milo de Jalea\",\r\n    \"historia\": \"Homero ve este caramelo en la Feria industrial del Dulce y, luego de que Marge tirara accidentalmente sus caramelos al piso, la roba. Al llegar a la casa, la Venus de Milo se pierde entre los demas dulces, pero luego resulta que se había pegado en los pantalones de Ashley Grant, la niñera. La chica piensa que Homero, al sacarla, trató de abusarla sexualmente, pero luego ve que Homero solo quiso el dulce y lo perdona.\",\r\n    \"descripcion\": \"Es la jalea más rara de todas, esculpida por artesanos de jalea, exclusivos del medio de la jalea\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -3156,13 +4251,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{baseUrl}}/productos/{{productos_id}}",
+							"raw": "{{baseUrl}}/productos/{{productoId}}",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
 								"productos",
-								"{{productos_id}}"
+								"{{productoId}}"
 							]
 						}
 					},
@@ -3210,6 +4305,25 @@
 				},
 				{
 					"name": "Update an invalid Producto",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"   pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Get expected error message\", function () {\r",
+									"   var data = pm.response.json();\r",
+									"   pm.expect(data.message).to.eql(\"The product with the given id was not found\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "PUT",
 						"header": [],
@@ -3277,17 +4391,31 @@
 				},
 				{
 					"name": "Delete a Producto",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 204\", function () {\r",
+									"   pm.response.to.have.status(204);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{baseUrl}}/productos/{{productos_id}}",
+							"raw": "{{baseUrl}}/productos/{{productoId}}",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
 								"productos",
-								"{{productos_id}}"
+								"{{productoId}}"
 							]
 						}
 					},
@@ -3319,6 +4447,25 @@
 				},
 				{
 					"name": "Delete an invalid Producto",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"   pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Get expected error message\", function () {\r",
+									"   var data = pm.response.json();\r",
+									"   pm.expect(data.message).to.eql('The product with the given id was not found');\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "DELETE",
 						"header": [],
@@ -3597,7 +4744,7 @@
 									"\r",
 									"pm.test(\"Get expected error message\", function () {\r",
 									"   var data = pm.response.json();\r",
-									"   pm.expect(data.message).to.eql(\"The receta with the given id was not found\");\r",
+									"   pm.expect(data.message).to.eql(\"The recipe with the given id was not found\");\r",
 									"});"
 								],
 								"type": "text/javascript",
@@ -3746,7 +4893,7 @@
 									"\r",
 									"pm.test(\"Get expected error message\", function () {\r",
 									"   var data = pm.response.json();\r",
-									"   pm.expect(data.message).to.eql(\"The receta with the given id was not found\");\r",
+									"   pm.expect(data.message).to.eql(\"The recipe with the given id was not found\");\r",
 									"});"
 								],
 								"type": "text/javascript",
@@ -3888,7 +5035,7 @@
 									"\r",
 									"pm.test(\"Get expected error message\", function () {\r",
 									"   var data = pm.response.json();\r",
-									"   pm.expect(data.message).to.eql(\"The receta with the given id was not found\");\r",
+									"   pm.expect(data.message).to.eql('The recipe with the given id was not found');\r",
 									"});"
 								],
 								"type": "text/javascript",
@@ -3900,12 +5047,12 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{baseUrl}}/recetaWW/00000000-0000-0000-0000-000000000000",
+							"raw": "{{baseUrl}}/receta/00000000-0000-0000-0000-000000000000",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
-								"recetaWW",
+								"receta",
 								"00000000-0000-0000-0000-000000000000"
 							]
 						}
@@ -3950,12 +5097,29 @@
 			"item": [
 				{
 					"name": "Add a Restaurante",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var data = pm.response.json();\r",
+									"pm.globals.set(\"restauranteId\", data.id);\r",
+									"\r",
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"nombre\": \"Le Cinq\",\r\n    \"estrellasMichelin\": \"3\",\r\n    \"fechaConsecucion\": \"2016-02-01\",\r\n    \"ciudad\": \"Paris\",\r\n    \"culturaGastronomica\": \"Cultura gastronómica francesa\"\r\n}",
+							"raw": "{\r\n    \"nombre\": \"Le Cinq\",\r\n    \"estrellasMichelin\": \"3\",\r\n    \"fechaConsecucion\": \"2016-02-01\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -3963,12 +5127,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{baseUrl}}/restaurants",
+							"raw": "{{baseUrl}}/restaurante",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
-								"restaurants"
+								"restaurante"
 							]
 						}
 					},
@@ -4006,16 +5170,35 @@
 				},
 				{
 					"name": "Get all Restaurantes",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Number of restaurantes > ' + 0, function () {\r",
+									"   var data = pm.response.json()\r",
+									"   pm.expect(data.length).to.greaterThan(0)\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"   pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{baseUrl}}/restaurants",
+							"raw": "{{baseUrl}}/restaurante",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
-								"restaurants"
+								"restaurante"
 							]
 						}
 					},
@@ -4053,23 +5236,31 @@
 				},
 				{
 					"name": "Get one Restaurante",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"   pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{baseUrl}}/restaurants/:restaurant_id",
+							"raw": "{{baseUrl}}/restaurante/{{restauranteId}}",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
-								"restaurants",
-								":restaurant_id"
-							],
-							"variable": [
-								{
-									"key": "restaurant_id",
-									"value": ""
-								}
+								"restaurante",
+								"{{restauranteId}}"
 							]
 						}
 					},
@@ -4101,16 +5292,35 @@
 				},
 				{
 					"name": "Get an invalid Restaurante",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"   pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Get expected error message\", function () {\r",
+									"   var data = pm.response.json();\r",
+									"   pm.expect(data.message).to.eql(\"The restaurant with the given id was not found\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{baseUrl}}/restaurants/00000000-0000-0000-0000-000000000000",
+							"raw": "{{baseUrl}}/restaurante/00000000-0000-0000-0000-000000000000",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
-								"restaurants",
+								"restaurante",
 								"00000000-0000-0000-0000-000000000000"
 							]
 						}
@@ -4150,12 +5360,26 @@
 				},
 				{
 					"name": "Update a Restaurante",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"   pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "PUT",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"nombre\": \"Le Cinq (Updated)\",\r\n    \"estrellasMichelin\": \"3\",\r\n    \"fechaConsecucion\": \"2016-02-01\",\r\n    \"ciudad\": \"Paris\",\r\n    \"culturaGastronomica\": \"Cultura gastronómica francesa\"\r\n}\r\n",
+							"raw": "{\r\n    \"nombre\": \"Le Cinq (Updated)\",\r\n    \"estrellasMichelin\": \"3\",\r\n    \"fechaConsecucion\": \"2016-02-01\"\r\n}\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -4163,19 +5387,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{baseUrl}}/restaurants/:restaurant_id",
+							"raw": "{{baseUrl}}/restaurante/{{restauranteId}}",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
-								"restaurants",
-								":restaurant_id"
-							],
-							"variable": [
-								{
-									"key": "restaurant_id",
-									"value": ""
-								}
+								"restaurante",
+								"{{restauranteId}}"
 							]
 						}
 					},
@@ -4213,12 +5431,31 @@
 				},
 				{
 					"name": "Update an invalid Restaurante",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"   pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Get expected error message\", function () {\r",
+									"   var data = pm.response.json();\r",
+									"   pm.expect(data.message).to.eql(\"The restaurant with the given id was not found\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "PUT",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"nombre\": \"Le Cinq (Updated)\",\r\n    \"estrellasMichelin\": \"3\",\r\n    \"fechaConsecucion\": \"2016-02-01\",\r\n    \"ciudad\": \"Paris\",\r\n    \"culturaGastronomica\": \"Cultura gastronómica francesa\"\r\n}",
+							"raw": "{\r\n    \"nombre\": \"Le Cinq (Updated)\",\r\n    \"estrellasMichelin\": \"3\",\r\n    \"fechaConsecucion\": \"2016-02-01\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -4226,12 +5463,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{baseUrl}}/restaurants/00000000-0000-0000-0000-000000000000",
+							"raw": "{{baseUrl}}/restaurante/00000000-0000-0000-0000-000000000000",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
-								"restaurants",
+								"restaurante",
 								"00000000-0000-0000-0000-000000000000"
 							]
 						}
@@ -4273,23 +5510,31 @@
 				},
 				{
 					"name": "Delete a Restaurante",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 204\", function () {\r",
+									"   pm.response.to.have.status(204);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{baseUrl}}/restaurants/:restaurant_id",
+							"raw": "{{baseUrl}}/restaurante/{{restauranteId}}",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
-								"restaurants",
-								":restaurant_id"
-							],
-							"variable": [
-								{
-									"key": "restaurant_id",
-									"value": ""
-								}
+								"restaurante",
+								"{{restauranteId}}"
 							]
 						}
 					},
@@ -4327,16 +5572,35 @@
 				},
 				{
 					"name": "Delete an invalid Restaurante",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"   pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Get expected error message\", function () {\r",
+									"   var data = pm.response.json();\r",
+									"   pm.expect(data.message).to.eql('The restaurant with the given id was not found');\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{baseUrl}}/restaurants/00000000-0000-0000-0000-000000000000",
+							"raw": "{{baseUrl}}/restaurante/00000000-0000-0000-0000-000000000000",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
-								"restaurants",
+								"restaurante",
 								"00000000-0000-0000-0000-000000000000"
 							]
 						}
@@ -4373,48 +5637,812 @@
 			"name": "País",
 			"item": [
 				{
+					"name": "pais-ciudad",
+					"item": [
+						{
+							"name": "Add a ciudad",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var data = pm.response.json();",
+											"pm.globals.set(\"ciudadId\", data.id);",
+											"",
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"nombre\": \"Medellín\",\n    \"codigo\":\"MED\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/ciudades",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"ciudades"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Add a país",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var data = pm.response.json();",
+											"pm.globals.set(\"paisId\", data.id);",
+											"",
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"nombre\": \"Colombia\",\n    \"alpha2\":\"CO\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/paises",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"paises"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Add a ciudad to a pais",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {\r",
+											"   pm.response.to.have.status(201);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/pais-ciudad/{{paisId}}/ciudades/{{ciudadId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"pais-ciudad",
+										"{{paisId}}",
+										"ciudades",
+										"{{ciudadId}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Add an invalid ciudad to a pais",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"   pm.response.to.have.status(404);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Get expected error message\", function () {\r",
+											"   var data = pm.response.json();\r",
+											"   pm.expect(data.message).to.eql(\"The city with the given id was not found\");\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/pais-ciudad/{{paisId}}/ciudades/00000000-0000-0000-0000-000000000000",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"pais-ciudad",
+										"{{paisId}}",
+										"ciudades",
+										"00000000-0000-0000-0000-000000000000"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Add a ciudad to an invalid pais",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"   pm.response.to.have.status(404);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Get expected error message\", function () {\r",
+											"   var data = pm.response.json();\r",
+											"   pm.expect(data.message).to.eql(\"The country with the given id was not found\");\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/pais-ciudad/00000000-0000-0000-0000-000000000000/ciudades/{{ciudadId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"pais-ciudad",
+										"00000000-0000-0000-0000-000000000000",
+										"ciudades",
+										"{{ciudadId}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get a ciudad of a pais",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"   pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/pais-ciudad/{{paisId}}/ciudades/{{ciudadId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"pais-ciudad",
+										"{{paisId}}",
+										"ciudades",
+										"{{ciudadId}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get an invalid ciudad of a pais",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"   pm.response.to.have.status(404);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Get expected error message\", function () {\r",
+											"   var data = pm.response.json();\r",
+											"   pm.expect(data.message).to.eql(\"The city with the given id was not found\");\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/pais-ciudad/{{paisId}}/ciudades/00000000-0000-0000-0000-000000000000",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"pais-ciudad",
+										"{{paisId}}",
+										"ciudades",
+										"00000000-0000-0000-0000-000000000000"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get a ciudad of an invalid pais",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"   pm.response.to.have.status(404);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Get expected error message\", function () {\r",
+											"   var data = pm.response.json();\r",
+											"   pm.expect(data.message).to.eql(\"The city with the given id was not found\");\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/pais-ciudad/00000000-0000-0000-0000-000000000000/ciudades/{{id_ciudad}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"pais-ciudad",
+										"00000000-0000-0000-0000-000000000000",
+										"ciudades",
+										"{{id_ciudad}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Add a ciudad 2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var data = pm.response.json();",
+											"pm.globals.set(\"ciudadId2\", data.id);",
+											"",
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"nombre\": \"Medellín\",\n    \"codigo\":\"MED\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/ciudades",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"ciudades"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get a ciudad non-associated to a pais",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 412\", function () {\r",
+											"   pm.response.to.have.status(412);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Get expected error message\", function () {\r",
+											"   var data = pm.response.json();\r",
+											"   pm.expect(data.message).to.eql(\"The city with the given id is not associated with the country\");\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/pais-ciudad/{{paisId}}/ciudades/{{ciudadId2}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"pais-ciudad",
+										"{{paisId}}",
+										"ciudades",
+										"{{ciudadId2}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get all ciudades of a pais",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"   pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/pais-ciudad/{{paisId}}/ciudades/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"pais-ciudad",
+										"{{paisId}}",
+										"ciudades",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get all ciudades of an invalid pais",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"   pm.response.to.have.status(404);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Get expected error message\", function () {\r",
+											"   var data = pm.response.json();\r",
+											"   pm.expect(data.message).to.eql( \"The country with the given id was not found\");\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/pais-ciudad/00000000-0000-0000-0000-000000000000/ciudades/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"pais-ciudad",
+										"00000000-0000-0000-0000-000000000000",
+										"ciudades",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update ciudad of a pais",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {\r",
+											"   pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "[\r\n    {\r\n        \"nombre\": \"Medellín\",\r\n        \"codigo\": \"MED\"\r\n    },\r\n    {\r\n        \"nombre\": \"Bogotá\",\r\n        \"codigo\": \"BOG\"\r\n    }\r\n]",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/pais-ciudad/{{paisId}}/ciudades/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"pais-ciudad",
+										"{{paisId}}",
+										"ciudades",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update invalid ciudades of a pais",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"   pm.response.to.have.status(404);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Get expected error message\", function () {\r",
+											"   var data = pm.response.json();\r",
+											"   pm.expect(data.message).to.eql(\"The city with the given id was not found\");\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "[\r\n    {\r\n        \"id\": \"00000000-0000-0000-0000-000000000000\"\r\n    },\r\n    {\r\n        \"id\": \"00000000-0000-0000-0000-000000000000\"\r\n    }\r\n]",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/pais-ciudad/{{paisId}}/ciudades/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"pais-ciudad",
+										"{{paisId}}",
+										"ciudades",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update ciudades of an invalid pais",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"   pm.response.to.have.status(404);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Get expected error message\", function () {\r",
+											"   var data = pm.response.json();\r",
+											"   pm.expect(data.message).to.eql(\"The country with the given id was not found\");\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "[\r\n    {\r\n        \"nombre\": \"Medellín\",\r\n        \"codigo\": \"MED\"\r\n    },\r\n    {\r\n        \"nombre\": \"Bogotá\",\r\n        \"codigo\": \"BOG\"\r\n    }\r\n]",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/pais-ciudad/00000000-0000-0000-0000-000000000000/ciudades/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"pais-ciudad",
+										"00000000-0000-0000-0000-000000000000",
+										"ciudades",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Add a ciudad to a pais 2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {\r",
+											"   pm.response.to.have.status(201);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/pais-ciudad/{{paisId}}/ciudades/{{ciudadId2}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"pais-ciudad",
+										"{{paisId}}",
+										"ciudades",
+										"{{ciudadId2}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete a ciudad of a pais",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 204\", function () {\r",
+											"   pm.response.to.have.status(204);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/pais-ciudad/{{paisId}}/ciudades/{{ciudadId2}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"pais-ciudad",
+										"{{paisId}}",
+										"ciudades",
+										"{{ciudadId2}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete a ciudad of an invalid pais",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"   pm.response.to.have.status(404);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Get expected error message\", function () {\r",
+											"   var data = pm.response.json();\r",
+											"   pm.expect(data.message).to.eql(\"The country with the given id was not found\");\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/pais-ciudad/00000000-0000-0000-0000-000000000000/ciudades/{{ciudadId2}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"pais-ciudad",
+										"00000000-0000-0000-0000-000000000000",
+										"ciudades",
+										"{{ciudadId2}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete an invalid ciudad of a pais",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"   pm.response.to.have.status(404);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Get expected error message\", function () {\r",
+											"   var data = pm.response.json();\r",
+											"   pm.expect(data.message).to.eql(\"The city with the given id was not found\");\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/pais-ciudad/{{paisId}}/ciudades/00000000-0000-0000-0000-000000000000",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"pais-ciudad",
+										"{{paisId}}",
+										"ciudades",
+										"00000000-0000-0000-0000-000000000000"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete a ciudad non-associated to a pais",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 412\", function () {\r",
+											"   pm.response.to.have.status(412);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Get expected error message\", function () {\r",
+											"   var data = pm.response.json();\r",
+											"   pm.expect(data.message).to.eql(\"The city with the given id is not associated with the country\");\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/pais-ciudad/{{paisId}}/ciudades/{{ciudadId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"pais-ciudad",
+										"{{paisId}}",
+										"ciudades",
+										"{{ciudadId}}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
 					"name": "Add a país",
 					"event": [
 						{
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.test(\"Response status code is 201\", function () {",
-									"    pm.expect(pm.response.code).to.equal(201);",
-									"});",
+									"var data = pm.response.json();",
+									"pm.globals.set(\"paisId\", data.id);",
 									"",
-									"",
-									"pm.test(\"Response time is within an acceptable range\", function () {",
-									"  pm.expect(pm.response.responseTime).to.be.below(300);",
-									"});",
-									"",
-									"",
-									"pm.test(\"Response has the required fields\", function () {",
-									"    const responseData = pm.response.json();",
-									"    ",
-									"    pm.expect(responseData).to.be.an('object');",
-									"    pm.expect(responseData).to.have.property('nombre');",
-									"    pm.expect(responseData).to.have.property('alpha2');",
-									"    pm.expect(responseData).to.have.property('ciudades');",
-									"    pm.expect(responseData).to.have.property('id');",
-									"});",
-									"",
-									"",
-									"pm.test(\"Nombre and alpha2 are non-empty strings\", function () {",
-									"  const responseData = pm.response.json();",
-									"  ",
-									"  pm.expect(responseData).to.be.an('object');",
-									"  pm.expect(responseData.nombre).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Nombre should not be empty\");",
-									"  pm.expect(responseData.alpha2).to.be.a('string').and.to.have.lengthOf.at.least(1, \"alpha2 should not be empty\");",
-									"});",
-									"",
-									"",
-									"pm.test(\"Ciudades is an array\", function () {",
-									"  const responseData = pm.response.json();",
-									"  ",
-									"  pm.expect(responseData.ciudades).to.be.an('array');",
-									"});",
-									""
+									"pm.test(\"Status code is 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});"
 								],
 								"type": "text/javascript",
 								"packages": {}
@@ -4426,7 +6454,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"nombre\": \"Colombia\",\n    \"alpha2\":\"CO\",\n    \"ciudades\":[]\n}",
+							"raw": "{\n    \"nombre\": \"Colombia\",\n    \"alpha2\":\"CO\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -4491,27 +6519,14 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.test(\"Response status code is 200\", function () {",
-									"    pm.response.to.have.status(200);",
+									"pm.test('Number of paises > ' + 0, function () {",
+									"   var data = pm.response.json()",
+									"   pm.expect(data.length).to.greaterThan(0)",
 									"});",
 									"",
-									"",
-									"pm.test(\"Response time is within an acceptable range\", function () {",
-									"  pm.expect(pm.response.responseTime).to.be.below(200);",
-									"});",
-									"",
-									"",
-									"pm.test(\"Response has the required fields - id, nombre, and alpha2\", function () {",
-									"    const responseData = pm.response.json();",
-									"    ",
-									"    pm.expect(responseData).to.be.an('array');",
-									"    responseData.forEach(function(item){",
-									"        pm.expect(item.id).to.exist;",
-									"        pm.expect(item.nombre).to.exist;",
-									"        pm.expect(item.alpha2).to.exist;",
-									"    });",
-									"});",
-									""
+									"pm.test(\"Status code is 200\", function () {",
+									"   pm.response.to.have.status(200);",
+									"});"
 								],
 								"type": "text/javascript",
 								"packages": {}
@@ -4570,24 +6585,9 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.test(\"Response status code is 200\", function () {",
-									"    pm.response.to.have.status(200);",
-									"});",
-									"",
-									"pm.test(\"Nombre is a non-empty string\", function () {",
-									"    const responseData = pm.response.json();",
-									"",
-									"    pm.expect(responseData).to.be.an('object');",
-									"    pm.expect(responseData.nombre).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Nombre should be a non-empty string\");",
-									"});",
-									"",
-									"pm.test(\"Alpha2 is a 2-character string\", function () {",
-									"  const responseData = pm.response.json();",
-									"  ",
-									"  pm.expect(responseData).to.be.an('object');",
-									"  pm.expect(responseData.alpha2).to.be.a('string').and.to.have.lengthOf(2);",
-									"});",
-									""
+									"pm.test(\"Status code is 200\", function () {",
+									"   pm.response.to.have.status(200);",
+									"});"
 								],
 								"type": "text/javascript",
 								"packages": {}
@@ -4598,13 +6598,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{baseUrl}}/paises/{{alpha2}}",
+							"raw": "{{baseUrl}}/paises/{{paisId}}",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
 								"paises",
-								"{{alpha2}}"
+								"{{paisId}}"
 							]
 						}
 					},
@@ -4648,24 +6648,14 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.test(\"Response status code is 404\", function () {",
-									"    pm.expect(pm.response.code).to.equal(404);",
+									"pm.test(\"Status code is 404\", function () {",
+									"   pm.response.to.have.status(404);",
 									"});",
 									"",
-									"",
-									"pm.test(\"Response time is less than 200ms\", function () {",
-									"  pm.expect(pm.response.responseTime).to.be.below(200);",
-									"});",
-									"",
-									"",
-									"pm.test(\"Response has the required fields - statusCode and message\", function () {",
-									"    const responseData = pm.response.json();",
-									"    ",
-									"    pm.expect(responseData).to.be.an('object');",
-									"    pm.expect(responseData.statusCode).to.exist;",
-									"    pm.expect(responseData.message).to.exist;",
-									"});",
-									""
+									"pm.test(\"Get expected error message\", function () {",
+									"   var data = pm.response.json();",
+									"   pm.expect(data.message).to.eql(\"The country with the given id was not found\");",
+									"});"
 								],
 								"type": "text/javascript",
 								"packages": {}
@@ -4676,13 +6666,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{baseUrl}}/paises/NAN",
+							"raw": "{{baseUrl}}/paises/00000000-0000-0000-0000-000000000000",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
 								"paises",
-								"NAN"
+								"00000000-0000-0000-0000-000000000000"
 							]
 						}
 					},
@@ -4778,13 +6768,8 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.test(\"Response status code is 200\", function () {",
-									"    pm.expect(pm.response.code).to.equal(200);",
-									"});",
-									"",
-									"",
-									"pm.test(\"Response time is within an acceptable range\", function () {",
-									"  pm.expect(pm.response.responseTime).to.be.lessThan(1000);",
+									"pm.test(\"Status code is 200\", function () {",
+									"   pm.response.to.have.status(200);",
 									"});"
 								],
 								"type": "text/javascript",
@@ -4797,7 +6782,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"nombre\": \"Mexico\",\n    \"alpha2\": \"MX\",\n    \"ciudades\": []\n}",
+							"raw": "{\n    \"nombre\": \"Mexico\",\n    \"alpha2\": \"MX\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -4805,13 +6790,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{baseUrl}}/paises/{{alpha2}}",
+							"raw": "{{baseUrl}}/paises/{{paisId}}",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
 								"paises",
-								"{{alpha2}}"
+								"{{paisId}}"
 							]
 						}
 					},
@@ -4864,35 +6849,14 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.test(\"Response status code is 200\", function () {",
-									"  pm.response.to.have.status(200);",
+									"pm.test(\"Status code is 404\", function () {",
+									"   pm.response.to.have.status(404);",
 									"});",
 									"",
-									"",
-									"pm.test(\"Response time is less than 200ms\", function () {",
-									"  pm.expect(pm.response.responseTime).to.be.below(200);",
-									"});",
-									"",
-									"",
-									"pm.test(\"Response has the required fields\", function () {",
-									"    const responseData = pm.response.json();",
-									"    ",
-									"    pm.expect(responseData).to.be.an('object');",
-									"    pm.expect(responseData).to.have.all.keys('response', 'status', 'message', 'name');",
-									"});",
-									"",
-									"",
-									"pm.test(\"Response attributes validation\", function () {",
-									"  const responseData = pm.response.json();",
-									"  ",
-									"  pm.expect(responseData).to.be.an('object');",
-									"  ",
-									"  pm.expect(responseData.response).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Response should be a non-empty string\");",
-									"  pm.expect(responseData.status).to.be.a('number').and.to.be.at.least(0, \"Status should be a non-negative integer\");",
-									"  pm.expect(responseData.message).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Message should be a non-empty string\");",
-									"  pm.expect(responseData.name).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Name should be a non-empty string\");",
-									"});",
-									""
+									"pm.test(\"Get expected error message\", function () {",
+									"   var data = pm.response.json();",
+									"   pm.expect(data.message).to.eql(\"The country with the given id was not found\");",
+									"});"
 								],
 								"type": "text/javascript",
 								"packages": {}
@@ -4912,13 +6876,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{baseUrl}}/paises/NAN",
+							"raw": "{{baseUrl}}/paises/00000000-0000-0000-0000-000000000000",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
 								"paises",
-								"NAN"
+								"00000000-0000-0000-0000-000000000000"
 							]
 						}
 					},
@@ -4971,8 +6935,8 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.test(\"Response status code is 204\", function () {",
-									"  pm.expect(pm.response.code).to.equal(204);",
+									"pm.test(\"Status code is 204\", function () {",
+									"   pm.response.to.have.status(204);",
 									"});"
 								],
 								"type": "text/javascript",
@@ -4984,13 +6948,13 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{baseUrl}}/paises/{{alpha2}}",
+							"raw": "{{baseUrl}}/paises/{{paisId}}",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
 								"paises",
-								"{{alpha2}}"
+								"{{paisId}}"
 							]
 						}
 					},
@@ -5027,8 +6991,13 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.test(\"Response status code is 404\", function () {",
-									"    pm.expect(pm.response.code).to.equal(404);",
+									"pm.test(\"Status code is 404\", function () {",
+									"   pm.response.to.have.status(404);",
+									"});",
+									"",
+									"pm.test(\"Get expected error message\", function () {",
+									"   var data = pm.response.json();",
+									"   pm.expect(data.message).to.eql('The country with the given id was not found');",
 									"});"
 								],
 								"type": "text/javascript",
@@ -5040,13 +7009,13 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{baseUrl}}/paises/NAN",
+							"raw": "{{baseUrl}}/paises/00000000-0000-0000-0000-000000000000",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
 								"paises",
-								"NAN"
+								"00000000-0000-0000-0000-000000000000"
 							]
 						}
 					},
@@ -5089,116 +7058,33 @@
 			"name": "Ciudad",
 			"item": [
 				{
-					"name": "Restaurante",
+					"name": "ciudad-restaurante",
 					"item": [
 						{
-							"name": "Get all restaurants in a city",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{baseUrl}}/ciudades/:ciudad_id/restaurants",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"ciudades",
-										":ciudad_id",
-										"restaurants"
-									],
-									"variable": [
-										{
-											"key": "ciudad_id",
-											"value": ""
-										}
-									]
-								}
-							},
-							"response": [
+							"name": "Add a ciudad",
+							"event": [
 								{
-									"name": "Get all restaurants in a city",
-									"originalRequest": {
-										"method": "GET",
-										"header": [],
-										"url": {
-											"raw": "{{baseUrl}}/ciudades/:ciudad_id/restaurants",
-											"host": [
-												"{{baseUrl}}"
-											],
-											"path": [
-												"ciudades",
-												":ciudad_id",
-												"restaurants"
-											],
-											"variable": [
-												{
-													"key": "ciudad_id",
-													"value": ""
-												}
-											]
-										}
-									},
-									"status": "OK",
-									"code": 200,
-									"_postman_previewlanguage": "Text",
-									"header": [],
-									"cookie": [],
-									"body": "[\r\n    {\r\n        \"id\": \"123e4567-e89b-12d3-a456-426614174000\",\r\n        \"nombre\": \"Le Cinq\",\r\n        \"estrellasMichelin\": \"3\",\r\n        \"fechaConsecucion\": \"2016-02-01\",\r\n        \"culturaGastronomica\": \"Cultura gastronómica francesa\"\r\n    },\r\n    {\r\n        \"id\": \"789e4567-e89b-12d3-a456-426614174111\",\r\n        \"nombre\": \"El Celler de Can Roca\",\r\n        \"estrellasMichelin\": \"3\",\r\n        \"fechaConsecucion\": \"2015-01-01\",\r\n        \"culturaGastronomica\": \"Cultura gastronómica española\"\r\n    }\r\n]\r\n"
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var data = pm.response.json();",
+											"pm.globals.set(\"ciudadId\", data.id);",
+											"",
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
 								}
-							]
-						},
-						{
-							"name": "Get all Restaurants in an Invalid City",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{baseUrl}}/ciudades/00000000-0000-0000-0000-000000000000/restaurants",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"ciudades",
-										"00000000-0000-0000-0000-000000000000",
-										"restaurants"
-									]
-								}
-							},
-							"response": [
-								{
-									"name": "Get all Restaurants in an Invalid City",
-									"originalRequest": {
-										"method": "GET",
-										"header": [],
-										"url": {
-											"raw": "{{baseUrl}}/ciudades/00000000-0000-0000-0000-000000000000/restaurants",
-											"host": [
-												"{{baseUrl}}"
-											],
-											"path": [
-												"ciudades",
-												"00000000-0000-0000-0000-000000000000",
-												"restaurants"
-											]
-										}
-									},
-									"status": "Not Found",
-									"code": 404,
-									"_postman_previewlanguage": "Text",
-									"header": [],
-									"cookie": [],
-									"body": "{\r\n    \"statusCode\": 404,\r\n    \"message\": \"The city with the given id was not found\"\r\n}"
-								}
-							]
-						},
-						{
-							"name": "Add a Restaurant to a City",
+							],
 							"request": {
 								"method": "POST",
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"restaurant_id\": \"123e4567-e89b-12d3-a456-426614174000\"\r\n}",
+									"raw": "{\n    \"nombre\": \"Medellín\",\n    \"codigo\":\"MED\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -5206,64 +7092,42 @@
 									}
 								},
 								"url": {
-									"raw": "{{baseUrl}}/ciudades/:ciudad_id/restaurants",
+									"raw": "{{baseUrl}}/ciudades",
 									"host": [
 										"{{baseUrl}}"
 									],
 									"path": [
-										"ciudades",
-										":ciudad_id",
-										"restaurants"
-									],
-									"variable": [
-										{
-											"key": "ciudad_id",
-											"value": ""
-										}
+										"ciudades"
 									]
 								}
 							},
-							"response": [
-								{
-									"name": "Add a Restaurant to a City",
-									"originalRequest": {
-										"method": "GET",
-										"header": [],
-										"url": {
-											"raw": "{{baseUrl}}/ciudades/:ciudad_id/restaurants",
-											"host": [
-												"{{baseUrl}}"
-											],
-											"path": [
-												"ciudades",
-												":ciudad_id",
-												"restaurants"
-											],
-											"variable": [
-												{
-													"key": "ciudad_id",
-													"value": ""
-												}
-											]
-										}
-									},
-									"status": "Created",
-									"code": 201,
-									"_postman_previewlanguage": "Text",
-									"header": [],
-									"cookie": [],
-									"body": "{\r\n    \"id\": \"123e4567-e89b-12d3-a456-426614174000\",\r\n    \"nombre\": \"Le Cinq\",\r\n    \"estrellasMichelin\": \"3\",\r\n    \"fechaConsecucion\": \"2016-02-01\",\r\n    \"culturaGastronomica\": \"Cultura gastronómica francesa\"\r\n}"
-								}
-							]
+							"response": []
 						},
 						{
-							"name": "Add a Restaurant to an Invalid City",
+							"name": "Add a restaurante",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var data = pm.response.json();\r",
+											"pm.globals.set(\"restauranteId\", data.id);\r",
+											"\r",
+											"pm.test(\"Status code is 201\", function () {\r",
+											"    pm.response.to.have.status(201);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
 							"request": {
 								"method": "POST",
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"restaurant_id\": \"123e4567-e89b-12d3-a456-426614174000\"\r\n}",
+									"raw": "{\r\n    \"nombre\": \"Le Cinq\",\r\n    \"estrellasMichelin\": \"3\",\r\n    \"fechaConsecucion\": \"2016-02-01\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -5271,302 +7135,714 @@
 									}
 								},
 								"url": {
-									"raw": "{{baseUrl}}/ciudades/00000000-0000-0000-0000-000000000000/restaurants",
+									"raw": "{{baseUrl}}/restaurante",
 									"host": [
 										"{{baseUrl}}"
 									],
 									"path": [
-										"ciudades",
-										"00000000-0000-0000-0000-000000000000",
-										"restaurants"
+										"restaurante"
 									]
 								}
 							},
-							"response": [
-								{
-									"name": "Add a Restaurant to an Invalid City",
-									"originalRequest": {
-										"method": "POST",
-										"header": [],
-										"body": {
-											"mode": "raw",
-											"raw": "{\r\n    \"restaurant_id\": \"123e4567-e89b-12d3-a456-426614174000\"\r\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "{{baseUrl}}/ciudades/00000000-0000-0000-0000-000000000000/restaurants",
-											"host": [
-												"{{baseUrl}}"
-											],
-											"path": [
-												"ciudades",
-												"00000000-0000-0000-0000-000000000000",
-												"restaurants"
-											]
-										}
-									},
-									"status": "Not Found",
-									"code": 404,
-									"_postman_previewlanguage": "Text",
-									"header": [],
-									"cookie": [],
-									"body": "{\r\n    \"statusCode\": 404,\r\n    \"message\": \"The city with the given id was not found\"\r\n}"
-								}
-							]
+							"response": []
 						},
 						{
-							"name": "Add an Invalid Restaurant to a City",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"method": "GET",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"restaurant_id\": \"00000000-0000-0000-0000-000000000000\"\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
+							"name": "Add a restaurante to a ciudad",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {\r",
+											"   pm.response.to.have.status(201);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
 									}
-								},
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
 								"url": {
-									"raw": "{{baseUrl}}/ciudades/:ciudad_id/restaurants",
+									"raw": "{{baseUrl}}/ciudad-restaurante/{{ciudadId}}/restaurantes/{{restauranteId}}",
 									"host": [
 										"{{baseUrl}}"
 									],
 									"path": [
-										"ciudades",
-										":ciudad_id",
-										"restaurants"
-									],
-									"variable": [
-										{
-											"key": "ciudad_id",
-											"value": ""
-										}
+										"ciudad-restaurante",
+										"{{ciudadId}}",
+										"restaurantes",
+										"{{restauranteId}}"
 									]
 								}
 							},
-							"response": [
-								{
-									"name": "Add an Invalid Restaurant to a City",
-									"originalRequest": {
-										"method": "GET",
-										"header": [],
-										"url": {
-											"raw": "{{baseUrl}}/ciudades/:ciudad_id/restaurants",
-											"host": [
-												"{{baseUrl}}"
-											],
-											"path": [
-												"ciudades",
-												":ciudad_id",
-												"restaurants"
-											],
-											"variable": [
-												{
-													"key": "ciudad_id",
-													"value": ""
-												}
-											]
-										}
-									},
-									"status": "Not Found",
-									"code": 404,
-									"_postman_previewlanguage": "Text",
-									"header": [],
-									"cookie": [],
-									"body": "{\r\n    \"statusCode\": 404,\r\n    \"message\": \"The restaurant with the given id was not found\"\r\n}"
-								}
-							]
+							"response": []
 						},
 						{
-							"name": "Delete a Restaurant from a City",
+							"name": "Add an invalid restaurante to a ciudad",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"   pm.response.to.have.status(404);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Get expected error message\", function () {\r",
+											"   var data = pm.response.json();\r",
+											"   pm.expect(data.message).to.eql(\"The restaurant with the given id was not found\");\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
 							"request": {
-								"method": "DELETE",
+								"method": "POST",
 								"header": [],
 								"url": {
-									"raw": "{{baseUrl}}/ciudades/:ciudad_id}}/restaurants/:estaurant_id",
+									"raw": "{{baseUrl}}/ciudad-restaurante/{{ciudadId}}/restaurantes/00000000-0000-0000-0000-000000000000",
 									"host": [
 										"{{baseUrl}}"
 									],
 									"path": [
-										"ciudades",
-										":ciudad_id}}",
-										"restaurants",
-										":estaurant_id"
-									],
-									"variable": [
-										{
-											"key": "ciudad_id}}",
-											"value": ""
-										},
-										{
-											"key": "estaurant_id",
-											"value": ""
-										}
-									]
-								}
-							},
-							"response": [
-								{
-									"name": "Delete a Restaurant from a City",
-									"originalRequest": {
-										"method": "DELETE",
-										"header": [],
-										"url": {
-											"raw": "{{baseUrl}}/ciudades/:ciudad_id}}/restaurants/:estaurant_id",
-											"host": [
-												"{{baseUrl}}"
-											],
-											"path": [
-												"ciudades",
-												":ciudad_id}}",
-												"restaurants",
-												":estaurant_id"
-											],
-											"variable": [
-												{
-													"key": "ciudad_id}}",
-													"value": ""
-												},
-												{
-													"key": "estaurant_id",
-													"value": ""
-												}
-											]
-										}
-									},
-									"status": "No Content",
-									"code": 204,
-									"_postman_previewlanguage": "Text",
-									"header": [],
-									"cookie": [],
-									"body": ""
-								}
-							]
-						},
-						{
-							"name": "Delete a Restaurant from an Invalid City",
-							"request": {
-								"method": "DELETE",
-								"header": [],
-								"url": {
-									"raw": "{{baseUrl}}/ciudades/00000000-0000-0000-0000-000000000000/restaurants/:restaurant_id",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"ciudades",
-										"00000000-0000-0000-0000-000000000000",
-										"restaurants",
-										":restaurant_id"
-									],
-									"variable": [
-										{
-											"key": "restaurant_id",
-											"value": ""
-										}
-									]
-								}
-							},
-							"response": [
-								{
-									"name": "Delete a Restaurant from an Invalid City",
-									"originalRequest": {
-										"method": "DELETE",
-										"header": [],
-										"url": {
-											"raw": "{{baseUrl}}/ciudades/00000000-0000-0000-0000-000000000000/restaurants/:restaurant_id",
-											"host": [
-												"{{baseUrl}}"
-											],
-											"path": [
-												"ciudades",
-												"00000000-0000-0000-0000-000000000000",
-												"restaurants",
-												":restaurant_id"
-											],
-											"variable": [
-												{
-													"key": "restaurant_id",
-													"value": ""
-												}
-											]
-										}
-									},
-									"status": "Not Found",
-									"code": 404,
-									"_postman_previewlanguage": "Text",
-									"header": [],
-									"cookie": [],
-									"body": "{\r\n    \"statusCode\": 404,\r\n    \"message\": \"The city with the given id was not found\"\r\n}"
-								}
-							]
-						},
-						{
-							"name": "Delete an Invalid Restaurant from a City",
-							"request": {
-								"method": "DELETE",
-								"header": [],
-								"url": {
-									"raw": "{{baseUrl}}/ciudades/:ciudad_id/restaurants/00000000-0000-0000-0000-000000000000",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"ciudades",
-										":ciudad_id",
-										"restaurants",
+										"ciudad-restaurante",
+										"{{ciudadId}}",
+										"restaurantes",
 										"00000000-0000-0000-0000-000000000000"
-									],
-									"variable": [
-										{
-											"key": "ciudad_id",
-											"value": ""
-										}
 									]
 								}
 							},
-							"response": [
+							"response": []
+						},
+						{
+							"name": "Add a restaurante to an invalid ciudad",
+							"event": [
 								{
-									"name": "Delete an Invalid Restaurant from a City",
-									"originalRequest": {
-										"method": "DELETE",
-										"header": [],
-										"url": {
-											"raw": "{{baseUrl}}/ciudades/:ciudad_id/restaurants/00000000-0000-0000-0000-000000000000",
-											"host": [
-												"{{baseUrl}}"
-											],
-											"path": [
-												"ciudades",
-												":ciudad_id",
-												"restaurants",
-												"00000000-0000-0000-0000-000000000000"
-											],
-											"variable": [
-												{
-													"key": "ciudad_id",
-													"value": ""
-												}
-											]
-										}
-									},
-									"status": "Not Found",
-									"code": 404,
-									"_postman_previewlanguage": "Text",
-									"header": [],
-									"cookie": [],
-									"body": "{\r\n    \"statusCode\": 404,\r\n    \"message\": \"The restaurant with the given id was not found\"\r\n}"
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"   pm.response.to.have.status(404);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Get expected error message\", function () {\r",
+											"   var data = pm.response.json();\r",
+											"   pm.expect(data.message).to.eql(\"The city with the given id was not found\");\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
 								}
-							]
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/ciudad-restaurante/00000000-0000-0000-0000-000000000000/restaurantes/{{restauranteId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"ciudad-restaurante",
+										"00000000-0000-0000-0000-000000000000",
+										"restaurantes",
+										"{{restauranteId}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get a restaurante of a ciudad",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"   pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/ciudad-restaurante/{{ciudadId}}/restaurantes/{{restauranteId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"ciudad-restaurante",
+										"{{ciudadId}}",
+										"restaurantes",
+										"{{restauranteId}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get an invalid restaurante of a ciudad",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"   pm.response.to.have.status(404);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Get expected error message\", function () {\r",
+											"   var data = pm.response.json();\r",
+											"   pm.expect(data.message).to.eql(\"The restaurant with the given id was not found\");\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/ciudad-restaurante/{{ciudadId}}/restaurantes/00000000-0000-0000-0000-000000000000",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"ciudad-restaurante",
+										"{{ciudadId}}",
+										"restaurantes",
+										"00000000-0000-0000-0000-000000000000"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get a producto of an invalid categoria",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"   pm.response.to.have.status(404);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Get expected error message\", function () {\r",
+											"   var data = pm.response.json();\r",
+											"   pm.expect(data.message).to.eql(\"The city with the given id was not found\");\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/ciudad-restaurante/00000000-0000-0000-0000-000000000000/restaurantes/{{restauranteId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"ciudad-restaurante",
+										"00000000-0000-0000-0000-000000000000",
+										"restaurantes",
+										"{{restauranteId}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Add a restaurante 2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var data = pm.response.json();\r",
+											"pm.globals.set(\"restauranteId2\", data.id);\r",
+											"\r",
+											"pm.test(\"Status code is 201\", function () {\r",
+											"    pm.response.to.have.status(201);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"nombre\": \"Le Cinq\",\r\n    \"estrellasMichelin\": \"3\",\r\n    \"fechaConsecucion\": \"2016-02-01\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/restaurante",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"restaurante"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get a restaurante non-associated to a ciudad",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 412\", function () {\r",
+											"   pm.response.to.have.status(412);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Get expected error message\", function () {\r",
+											"   var data = pm.response.json();\r",
+											"   pm.expect(data.message).to.eql(\"The restaurant with the given id is not associated with the city\");\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/ciudad-restaurante/{{ciudadId}}/restaurantes/{{restauranteId2}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"ciudad-restaurante",
+										"{{ciudadId}}",
+										"restaurantes",
+										"{{restauranteId2}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get all restaurantes of a ciudad",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"   pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/ciudad-restaurante/{{ciudadId}}/restaurantes",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"ciudad-restaurante",
+										"{{ciudadId}}",
+										"restaurantes"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get all restaurantes of an invalid ciudad",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"   pm.response.to.have.status(404);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Get expected error message\", function () {\r",
+											"   var data = pm.response.json();\r",
+											"   pm.expect(data.message).to.eql(\"The city with the given id was not found\");\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/ciudad-restaurante/00000000-0000-0000-0000-000000000000/restaurantes",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"ciudad-restaurante",
+										"00000000-0000-0000-0000-000000000000",
+										"restaurantes"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update restaurantes of a ciudad",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {\r",
+											"   pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "[\r\n    {\r\n        \"nombre\": \"Le Cinq\",\r\n        \"estrellasMichelin\": \"3\",\r\n        \"fechaConsecucion\": \"2016-02-01\"\r\n    },\r\n    {\r\n        \"nombre\": \"Motza\",\r\n        \"estrellasMichelin\": \"4\",\r\n        \"fechaConsecucion\": \"2017-02-01\"\r\n    }\r\n]",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/ciudad-restaurante/{{ciudadId}}/restaurantes",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"ciudad-restaurante",
+										"{{ciudadId}}",
+										"restaurantes"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update invalid restaurantes of a ciudad",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"   pm.response.to.have.status(404);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Get expected error message\", function () {\r",
+											"   var data = pm.response.json();\r",
+											"   pm.expect(data.message).to.eql(\"The restaurant with the given id was not found\");\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "[\r\n    {\r\n        \"id\": \"00000000-0000-0000-0000-000000000000\"\r\n    },\r\n    {\r\n        \"id\": \"00000000-0000-0000-0000-000000000000\"\r\n    }\r\n]",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/ciudad-restaurante/{{ciudadId}}/restaurantes",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"ciudad-restaurante",
+										"{{ciudadId}}",
+										"restaurantes"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update restaurantes of an invalid ciudad",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"   pm.response.to.have.status(404);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Get expected error message\", function () {\r",
+											"   var data = pm.response.json();\r",
+											"   pm.expect(data.message).to.eql(\"The city with the given id was not found\");\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "[\r\n    {\r\n        \"nombre\": \"Venus de Milo de Jalea\",\r\n        \"historia\": \"Homero ve este caramelo en la Feria industrial del Dulce y, luego de que Marge tirara accidentalmente sus caramelos al piso, la roba. Al llegar a la casa, la Venus de Milo se pierde entre los demas dulces, pero luego resulta que se había pegado en los pantalones de Ashley Grant, la niñera. La chica piensa que Homero, al sacarla, trató de abusarla sexualmente, pero luego ve que Homero solo quiso el dulce y lo perdona.\",\r\n        \"descripcion\": \"Es la jalea más rara de todas, esculpida por artesanos de jalea, exclusivos del medio de la jalea\"\r\n    },\r\n    {\r\n        \"nombre\": \"Venus de Milo\",\r\n        \"historia\": \"Homero ve este caramelo en la Feria industrial del Dulce y, luego de que Marge tirara accidentalmente sus caramelos al piso, la roba. Al llegar a la casa, la Venus de Milo se pierde entre los demas dulces, pero luego resulta que se había pegado en los pantalones de Ashley Grant, la niñera. La chica piensa que Homero, al sacarla, trató de abusarla sexualmente, pero luego ve que Homero solo quiso el dulce y lo perdona.\",\r\n        \"descripcion\": \"Es la jalea más rara de todas, esculpida por artesanos de jalea, exclusivos del medio de la jalea\"\r\n    }\r\n]",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/ciudad-restaurante/00000000-0000-0000-0000-000000000000/restaurantes",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"ciudad-restaurante",
+										"00000000-0000-0000-0000-000000000000",
+										"restaurantes"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Add a restaurante to a ciudad 2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {\r",
+											"   pm.response.to.have.status(201);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/ciudad-restaurante/{{ciudadId}}/restaurantes/{{restauranteId2}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"ciudad-restaurante",
+										"{{ciudadId}}",
+										"restaurantes",
+										"{{restauranteId2}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete a restaurante of a ciudad",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 204\", function () {\r",
+											"   pm.response.to.have.status(204);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/ciudad-restaurante/{{ciudadId}}/restaurantes/{{restauranteId2}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"ciudad-restaurante",
+										"{{ciudadId}}",
+										"restaurantes",
+										"{{restauranteId2}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete a restaurante of an invalid ciudad",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"   pm.response.to.have.status(404);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Get expected error message\", function () {\r",
+											"   var data = pm.response.json();\r",
+											"   pm.expect(data.message).to.eql(\"The city with the given id was not found\");\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/ciudad-restaurante/00000000-0000-0000-0000-000000000000/restaurantes/{{restauranteId2}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"ciudad-restaurante",
+										"00000000-0000-0000-0000-000000000000",
+										"restaurantes",
+										"{{restauranteId2}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete an invalid restaurante of a ciudad",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"   pm.response.to.have.status(404);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Get expected error message\", function () {\r",
+											"   var data = pm.response.json();\r",
+											"   pm.expect(data.message).to.eql(\"The restaurant with the given id was not found\");\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/ciudad-restaurante/{{ciudadId}}/restaurantes/00000000-0000-0000-0000-000000000000",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"ciudad-restaurante",
+										"{{ciudadId}}",
+										"restaurantes",
+										"00000000-0000-0000-0000-000000000000"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete a restaurante non-associated to a ciudad",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 412\", function () {\r",
+											"   pm.response.to.have.status(412);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Get expected error message\", function () {\r",
+											"   var data = pm.response.json();\r",
+											"   pm.expect(data.message).to.eql(\"The restaurant with the given id is not associated with the city\");\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/ciudad-restaurante/{{ciudadId}}/restaurantes/{{restauranteId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"ciudad-restaurante",
+										"{{ciudadId}}",
+										"restaurantes",
+										"{{restauranteId}}"
+									]
+								}
+							},
+							"response": []
 						}
 					]
 				},
@@ -5577,45 +7853,12 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"const idCiudad = pm.response.json().id",
+									"var data = pm.response.json();",
+									"pm.globals.set(\"ciudadId\", data.id);",
 									"",
-									"pm.collectionVariables.set(\"id_ciudad\", idCiudad);",
-									"",
-									"pm.test(\"Response status code is 201\", function () {",
-									"    pm.expect(pm.response.code).to.equal(201);",
-									"});",
-									"",
-									"        ",
-									"pm.test(\"Response time is within an acceptable range\", function () {",
-									"  pm.expect(pm.response.responseTime).to.be.below(300);",
-									"});",
-									"",
-									"",
-									"pm.test(\"Response has the required fields - nombre, codigo, and id\", function () {",
-									"    const responseData = pm.response.json();",
-									"    ",
-									"    pm.expect(responseData).to.be.an('object');",
-									"    pm.expect(responseData.nombre).to.exist;",
-									"    pm.expect(responseData.codigo).to.exist;",
-									"    pm.expect(responseData.id).to.exist;",
-									"});",
-									"",
-									"",
-									"pm.test(\"Nombre is a non-empty string\", function () {",
-									"  const responseData = pm.response.json();",
-									"  ",
-									"  pm.expect(responseData).to.be.an('object');",
-									"  pm.expect(responseData.nombre).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Nombre should not be empty\");",
-									"});",
-									"",
-									"",
-									"pm.test(\"Codigo is a non-empty string\", function () {",
-									"    const responseData = pm.response.json();",
-									"",
-									"    pm.expect(responseData).to.be.an('object');",
-									"    pm.expect(responseData.codigo).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Codigo should not be empty\");",
-									"});",
-									""
+									"pm.test(\"Status code is 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});"
 								],
 								"type": "text/javascript",
 								"packages": {}
@@ -5692,33 +7935,13 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.test(\"Response status code is 200\", function () {",
-									"    pm.response.to.have.status(200);",
+									"pm.test('Number of ciudades > ' + 0, function () {",
+									"   var data = pm.response.json()",
+									"   pm.expect(data.length).to.greaterThan(0)",
 									"});",
 									"",
-									"",
-									"pm.test(\"Response time is less than 200ms\", function () {",
-									"  pm.expect(pm.response.responseTime).to.be.below(200);",
-									"});",
-									"",
-									"",
-									"pm.test(\"Response has the required fields - id, nombre, and codigo\", function () {",
-									"    const responseData = pm.response.json();",
-									"    ",
-									"    pm.expect(responseData).to.be.an('array');",
-									"    responseData.forEach(city => {",
-									"        pm.expect(city).to.include.all.keys('id', 'nombre', 'codigo');",
-									"    });",
-									"});",
-									"",
-									"",
-									"pm.test(\"ID is a non-empty string\", function () {",
-									"    const responseData = pm.response.json();",
-									"    ",
-									"    pm.expect(responseData).to.be.an('array');",
-									"    responseData.forEach(function(item) {",
-									"        pm.expect(item.id).to.be.a('string').and.to.have.lengthOf.at.least(1, \"ID should be a non-empty string\");",
-									"    });",
+									"pm.test(\"Status code is 200\", function () {",
+									"   pm.response.to.have.status(200);",
 									"});"
 								],
 								"type": "text/javascript",
@@ -5773,17 +7996,31 @@
 				},
 				{
 					"name": "Get one ciudad",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"   pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{baseUrl}}/ciudades/{{id_ciudad}}",
+							"raw": "{{baseUrl}}/ciudades/{{ciudadId}}",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
 								"ciudades",
-								"{{id_ciudad}}"
+								"{{ciudadId}}"
 							]
 						}
 					},
@@ -5827,29 +8064,14 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.test(\"Response status code is 404\", function () {",
-									"  pm.expect(pm.response.code).to.equal(404);",
+									"pm.test(\"Status code is 404\", function () {",
+									"   pm.response.to.have.status(404);",
 									"});",
 									"",
-									"",
-									"pm.test(\"Response has the required fields - statusCode and message\", function () {",
-									"    const responseData = pm.response.json();",
-									"    ",
-									"    pm.expect(responseData).to.be.an('object');",
-									"    pm.expect(responseData).to.have.property('statusCode');",
-									"    pm.expect(responseData).to.have.property('message');",
-									"});",
-									"",
-									"",
-									"pm.test(\"Content-Type is application/json\", function () {",
-									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");",
-									"});",
-									"",
-									"",
-									"pm.test(\"Response time is less than 200ms\", function () {",
-									"  pm.expect(pm.response.responseTime).to.be.below(200);",
-									"});",
-									""
+									"pm.test(\"Get expected error message\", function () {",
+									"   var data = pm.response.json();",
+									"   pm.expect(data.message).to.eql(\"The city with the given id was not found\");",
+									"});"
 								],
 								"type": "text/javascript",
 								"packages": {}
@@ -5860,13 +8082,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{baseUrl}}/ciudades/NAN",
+							"raw": "{{baseUrl}}/ciudades/00000000-0000-0000-0000-000000000000",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
 								"ciudades",
-								"NAN"
+								"00000000-0000-0000-0000-000000000000"
 							]
 						}
 					},
@@ -5910,26 +8132,9 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.test(\"Response status code is 400\", function () {",
-									"    pm.expect(pm.response.code).to.equal(400);",
-									"});",
-									"",
-									"pm.test(\"Message field is a non-empty array\", function () {",
-									"  const responseData = pm.response.json();",
-									"  ",
-									"  pm.expect(responseData.message).to.be.an('array').and.to.have.lengthOf.at.least(1, \"Message array should not be empty\");",
-									"});",
-									"",
-									"",
-									"pm.test(\"Content-Type header is application/json\", function () {",
-									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");",
-									"});",
-									"",
-									"",
-									"pm.test(\"Response time is less than 500ms\", function () {",
-									"  pm.expect(pm.response.responseTime).to.be.below(500);",
-									"});",
-									""
+									"pm.test(\"Status code is 200\", function () {",
+									"   pm.response.to.have.status(200);",
+									"});"
 								],
 								"type": "text/javascript",
 								"packages": {}
@@ -5939,14 +8144,23 @@
 					"request": {
 						"method": "PUT",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Bogota\",\r\n    \"codigo\":\"BOG\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
-							"raw": "{{baseUrl}}/ciudades/{{id_ciudad}}",
+							"raw": "{{baseUrl}}/ciudades/{{ciudadId}}",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
 								"ciudades",
-								"{{id_ciudad}}"
+								"{{ciudadId}}"
 							]
 						}
 					},
@@ -6005,24 +8219,14 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.test(\"Response status code is 400\", function () {",
-									"    pm.expect(pm.response.code).to.equal(400);",
+									"pm.test(\"Status code is 404\", function () {",
+									"   pm.response.to.have.status(404);",
 									"});",
 									"",
-									"",
-									"pm.test(\"Response has the required fields - message, error, statusCode\", function () {",
-									"    const responseData = pm.response.json();",
-									"    ",
-									"    pm.expect(responseData).to.be.an('object');",
-									"    pm.expect(responseData).to.have.property('message');",
-									"    pm.expect(responseData).to.have.property('error');",
-									"    pm.expect(responseData).to.have.property('statusCode');",
-									"});",
-									"",
-									"pm.test(\"Response time is less than 200ms\", function () {",
-									"  pm.expect(pm.response.responseTime).to.be.below(200);",
-									"});",
-									""
+									"pm.test(\"Get expected error message\", function () {",
+									"   var data = pm.response.json();",
+									"   pm.expect(data.message).to.eql(\"The city with the given id was not found\");",
+									"});"
 								],
 								"type": "text/javascript",
 								"packages": {}
@@ -6032,20 +8236,29 @@
 					"request": {
 						"method": "PUT",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Bogota\",\r\n    \"codigo\":\"BOG\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
-							"raw": "{{baseUrl}}/ciudades/NAN",
+							"raw": "{{baseUrl}}/ciudades/00000000-0000-0000-0000-000000000000",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
 								"ciudades",
-								"NAN"
+								"00000000-0000-0000-0000-000000000000"
 							]
 						}
 					},
 					"response": [
 						{
-							"name": "Update a invalid ciudad",
+							"name": "Update a ciudad",
 							"originalRequest": {
 								"method": "PUT",
 								"header": [
@@ -6057,7 +8270,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"nombre\": \"Medellín-LAT\",\n    \"codigo\":\"MED\"\n}",
+									"raw": "{\n    \"nombre\": \"Medellín-LAT\",\n    \"codigo\":\"MED\",\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -6065,13 +8278,13 @@
 									}
 								},
 								"url": {
-									"raw": "{{baseUrl}}/ciudades/NAN",
+									"raw": "{{baseUrl}}/ciudades/{{id_ciudad}}",
 									"host": [
 										"{{baseUrl}}"
 									],
 									"path": [
 										"ciudades",
-										"NAN"
+										"{{id_ciudad}}"
 									]
 								}
 							},
@@ -6087,7 +8300,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"statusCode\": 404,\n    \"message\": \"The ciudad with the given codigo was not found\"\n}"
+							"body": "{\n    \"id\": \"c33cd91f-8fd3-47f3-9914-e5e5be18eda0\",\n    \"nombre\": \"Medellín-LAT\",\n    \"codigo\": \"MED\",\n    \"alpha2_país\": \"CO\"\n}"
 						}
 					]
 				},
@@ -6098,8 +8311,8 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.test(\"Response status code is 204\", function () {",
-									"    pm.response.to.have.status(204);",
+									"pm.test(\"Status code is 204\", function () {",
+									"   pm.response.to.have.status(204);",
 									"});"
 								],
 								"type": "text/javascript",
@@ -6111,13 +8324,13 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{baseUrl}}/ciudades/{{id_ciudad}}",
+							"raw": "{{baseUrl}}/ciudades/{{ciudadId}}",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
 								"ciudades",
-								"{{id_ciudad}}"
+								"{{ciudadId}}"
 							]
 						}
 					},
@@ -6154,38 +8367,14 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.test(\"Response status code is 404\", function () {",
-									"    pm.expect(pm.response.code).to.equal(404);",
+									"pm.test(\"Status code is 404\", function () {",
+									"   pm.response.to.have.status(404);",
 									"});",
 									"",
-									"",
-									"pm.test(\"Response time is less than 500ms\", function () {",
-									"  pm.expect(pm.response.responseTime).to.be.below(500);",
-									"});",
-									"",
-									"",
-									"pm.test(\"Response has the required fields\", function () {",
-									"  const responseData = pm.response.json();",
-									"  ",
-									"  pm.expect(responseData).to.be.an('object');",
-									"  pm.expect(responseData).to.have.property('statusCode');",
-									"  pm.expect(responseData).to.have.property('message');",
-									"});",
-									"",
-									"",
-									"pm.test(\"StatusCode is a non-negative integer\", function () {",
-									"  const responseData = pm.response.json();",
-									"  ",
-									"  pm.expect(responseData.statusCode).to.be.a('number').and.to.satisfy((statusCode) => statusCode >= 0);",
-									"});",
-									"",
-									"",
-									"pm.test(\"Message is a non-empty string\", function () {",
-									"    const responseData = pm.response.json();",
-									"    ",
-									"    pm.expect(responseData.message).to.exist.and.to.be.a('string').and.to.have.lengthOf.at.least(1, \"Message should not be empty\");",
-									"});",
-									""
+									"pm.test(\"Get expected error message\", function () {",
+									"   var data = pm.response.json();",
+									"   pm.expect(data.message).to.eql('The city with the given id was not found');",
+									"});"
 								],
 								"type": "text/javascript",
 								"packages": {}
@@ -6196,13 +8385,13 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{baseUrl}}/ciudades/{{id_ciudad}}",
+							"raw": "{{baseUrl}}/ciudades/00000000-0000-0000-0000-000000000000",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
 								"ciudades",
-								"{{id_ciudad}}"
+								"00000000-0000-0000-0000-000000000000"
 							]
 						}
 					},
@@ -6236,1561 +8425,6 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"statusCode\": 404,\n    \"message\": \"The ciudad with the given codigo was not found\"\n}"
-						}
-					]
-				}
-			]
-		},
-		{
-			"name": "País-Ciudad",
-			"item": [
-				{
-					"name": "Add a ciudad to a pais",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Response status code is 201\", function () {",
-									"    pm.expect(pm.response.code).to.equal(201);",
-									"});",
-									"",
-									"",
-									"pm.test(\"Response time is within an acceptable range\", function () {",
-									"  pm.expect(pm.response.responseTime).to.be.below(500);",
-									"});",
-									"",
-									"",
-									"pm.test(\"Response has the required fields - id, nombre, alpha2, and ciudades\", function () {",
-									"    const responseData = pm.response.json();",
-									"    ",
-									"    pm.expect(responseData).to.be.an('object');",
-									"    pm.expect(responseData.id).to.exist;",
-									"    pm.expect(responseData.nombre).to.exist;",
-									"    pm.expect(responseData.alpha2).to.exist;",
-									"    pm.expect(responseData.ciudades).to.exist;",
-									"});",
-									"",
-									"",
-									"pm.test(\"Id, nombre, and alpha2 are non-empty strings\", function () {",
-									"    const responseData = pm.response.json();",
-									"    ",
-									"    pm.expect(responseData).to.be.an('object');",
-									"    pm.expect(responseData.id).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Id should not be empty\");",
-									"    pm.expect(responseData.nombre).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Nombre should not be empty\");",
-									"    pm.expect(responseData.alpha2).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Alpha2 should not be empty\");",
-									"});",
-									"",
-									"",
-									"pm.test(\"Ciudades array is present and contains expected number of elements\", function () {",
-									"    const responseData = pm.response.json();",
-									"    ",
-									"    pm.expect(responseData).to.be.an('object');",
-									"    pm.expect(responseData.ciudades).to.exist.and.to.be.an('array');",
-									"    pm.expect(responseData.ciudades.length).to.equal(1);",
-									"});",
-									""
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [],
-						"url": {
-							"raw": "{{baseUrl}}/paises/{{alpha2}}/ciudades/{{id_ciudad}}",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"paises",
-								"{{alpha2}}",
-								"ciudades",
-								"{{id_ciudad}}"
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "Add a ciudad to a pais",
-							"originalRequest": {
-								"method": "POST",
-								"header": [],
-								"url": {
-									"raw": "{{baseUrl}}/paises/{{alpha2}}/ciudades/{{id_ciudad}}",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"paises",
-										"{{alpha2}}",
-										"ciudades",
-										"{{id_ciudad}}"
-									]
-								}
-							},
-							"status": "Created",
-							"code": 201,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "application/json",
-									"description": "",
-									"type": "text"
-								}
-							],
-							"cookie": [],
-							"body": "{\n  \"id\": \"123e4567-e89b-12d3-a456-426614174000\",\n  \"nombre\": \"Argentina\",\n  \"alpha2\": \"AR\",\n  \"ciudades\": [\n      {\n          \"id\": \"123e4567-e89b-12d3-a456-426614174001\",\n          \"nombre\": \"Buenos Aires\",\n          \"codigo\": \"BA\"\n      }\n  ]\n}\n"
-						}
-					]
-				},
-				{
-					"name": "Add an invalid ciudad to país",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Response status code is 404\", function () {",
-									"  pm.expect(pm.response.code).to.equal(404);",
-									"});",
-									"",
-									"",
-									"pm.test(\"Response time is within an acceptable range\", function () {",
-									"  pm.expect(pm.response.responseTime).to.be.below(200);",
-									"});",
-									"",
-									"",
-									"pm.test(\"Response has the required fields - statusCode and message\", function () {",
-									"    const responseData = pm.response.json();",
-									"    ",
-									"    pm.expect(responseData).to.be.an('object');",
-									"    pm.expect(responseData).to.have.property('statusCode');",
-									"    pm.expect(responseData).to.have.property('message');",
-									"});",
-									"",
-									"",
-									"pm.test(\"Validate that the statusCode is a non-negative integer\", function () {",
-									"  const responseData = pm.response.json();",
-									"  ",
-									"  pm.expect(responseData.statusCode).to.be.a('number');",
-									"  pm.expect(responseData.statusCode).to.be.at.least(0);",
-									"});",
-									"",
-									"",
-									"pm.test(\"Message is a non-empty string\", function () {",
-									"  const responseData = pm.response.json();",
-									"  ",
-									"  pm.expect(responseData.message).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Message should not be empty\");",
-									"});",
-									""
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [],
-						"url": {
-							"raw": "{{baseUrl}}/paises/{{alpha2}}/ciudades/00000000-0000-0000-0000-000000000000",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"paises",
-								"{{alpha2}}",
-								"ciudades",
-								"00000000-0000-0000-0000-000000000000"
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "Add an invalid ciudad to país",
-							"originalRequest": {
-								"method": "POST",
-								"header": [],
-								"url": {
-									"raw": "{{baseUrl}}/paises/{{alpha2}}/ciudades/00000000-0000-0000-0000-000000000000",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"paises",
-										"{{alpha2}}",
-										"ciudades",
-										"00000000-0000-0000-0000-000000000000"
-									]
-								}
-							},
-							"status": "Not Found",
-							"code": 404,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "application/json",
-									"description": "",
-									"type": "text"
-								}
-							],
-							"cookie": [],
-							"body": "{\n  \"statusCode\": 404,\n  \"message\": \"The city with the given id was not found\"\n}\n"
-						}
-					]
-				},
-				{
-					"name": "Add a ciudad to an invalid país",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Response status code is 404\", function () {",
-									"  pm.expect(pm.response.code).to.equal(404);",
-									"});",
-									"",
-									"",
-									"pm.test(\"Response time is within acceptable range\", function () {",
-									"  pm.expect(pm.response.responseTime).to.be.below(200);",
-									"});",
-									"",
-									"",
-									"pm.test(\"Response has the required fields - statusCode and message\", function () {",
-									"    const responseData = pm.response.json();",
-									"    ",
-									"    pm.expect(responseData).to.be.an('object');",
-									"    pm.expect(responseData).to.include.all.keys('statusCode', 'message');",
-									"});",
-									""
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [],
-						"url": {
-							"raw": "{{baseUrl}}/paises/NAN/ciudades/{{id_ciudad}}",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"paises",
-								"NAN",
-								"ciudades",
-								"{{id_ciudad}}"
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "Add a ciudad to an invalid país",
-							"originalRequest": {
-								"method": "POST",
-								"header": [],
-								"url": {
-									"raw": "{{baseUrl}}/paises/{{alpha2}}/ciudades/{{id_ciudad}}",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"paises",
-										"{{alpha2}}",
-										"ciudades",
-										"{{id_ciudad}}"
-									]
-								}
-							},
-							"status": "Not Found",
-							"code": 404,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "application/json",
-									"description": "",
-									"type": "text"
-								}
-							],
-							"cookie": [],
-							"body": "{\n  \"statusCode\": 404,\n  \"message\": \"The country with the given id was not found\"\n}\n"
-						}
-					]
-				},
-				{
-					"name": "Get a ciudad of a country",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{baseUrl}}/paises/{{alpha2}}/ciudades/{{id_ciudad}}",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"paises",
-								"{{alpha2}}",
-								"ciudades",
-								"{{id_ciudad}}"
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "Get a ciudad of a country",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{baseUrl}}/paises/{{alpha2}}/ciudades/{{id_ciudad}}",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"paises",
-										"{{alpha2}}",
-										"ciudades",
-										"{{id_ciudad}}"
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "application/json",
-									"description": "",
-									"type": "text"
-								}
-							],
-							"cookie": [],
-							"body": "{\n  \"id\": \"123e4567-e89b-12d3-a456-426614174001\",\n  \"nombre\": \"Buenos Aires\",\n  \"codigo\": \"BA\",\n  \"alpha2_país\": \"AR\"\n}\n"
-						}
-					]
-				},
-				{
-					"name": "Get a invalid ciudad of a país",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{baseUrl}}/paises/{{alpha2}}/ciudades/00000000-0000-0000-0000-000000000000",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"paises",
-								"{{alpha2}}",
-								"ciudades",
-								"00000000-0000-0000-0000-000000000000"
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "Get a invalid ciudad of a país",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{baseUrl}}/paises/123e4567-e89b-12d3-a456-426614174000/ciudades/00000000-0000-0000-0000-000000000000",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"paises",
-										"123e4567-e89b-12d3-a456-426614174000",
-										"ciudades",
-										"00000000-0000-0000-0000-000000000000"
-									]
-								}
-							},
-							"status": "Not Found",
-							"code": 404,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "application/json",
-									"description": "",
-									"type": "text"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"statusCode\": 404,\n    \"message\": \"The city with the given id was not found\"\n}"
-						}
-					]
-				},
-				{
-					"name": "Get a ciudad of a invalid país",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{baseUrl}}/paises/NAN/ciudades/{{id_ciudad}}",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"paises",
-								"NAN",
-								"ciudades",
-								"{{id_ciudad}}"
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "Get a ciudad of a invalid país",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{baseUrl}}/paises/NAN/ciudades/{{id_ciudad}}",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"paises",
-										"NAN",
-										"ciudades",
-										"{{id_ciudad}}"
-									]
-								}
-							},
-							"status": "Not Found",
-							"code": 404,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "application/json",
-									"description": "",
-									"type": "text"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"statusCode\": 404,\n    \"message\": \"The country with the given alpha2 was not found\"\n}"
-						}
-					]
-				},
-				{
-					"name": "Get all ciudades of a país",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{baseUrl}}/paises/{{alpha2}}/ciudades",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"paises",
-								"{{alpha2}}",
-								"ciudades"
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "Get all ciudades of a país",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{baseUrl}}/paises/{{alpha2}}/ciudades",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"paises",
-										"{{alpha2}}",
-										"ciudades"
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "application/json",
-									"description": "",
-									"type": "text"
-								}
-							],
-							"cookie": [],
-							"body": "[\n    {\n        \"id\": \"123e4567-e89b-12d3-a456-426614174001\",\n        \"nombre\": \"Buenos Aires\",\n        \"codigo\": \"BA\",\n        \"alpha2_país\": \"AR\"\n    },\n    {\n        \"id\": \"123e4567-e89b-12d3-a456-426614174002\",\n        \"nombre\": \"Córdoba\",\n        \"codigo\": \"CB\",\n        \"alpha2_país\": \"AR\"\n    }\n]"
-						}
-					]
-				},
-				{
-					"name": "Get all ciudades of a invalid país",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{baseUrl}}/paises/NAN/ciudades",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"paises",
-								"NAN",
-								"ciudades"
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "Get all ciudades of a invalid país",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{baseUrl}}/paises/NAN/ciudades",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"paises",
-										"NAN",
-										"ciudades"
-									]
-								}
-							},
-							"status": "Not Found",
-							"code": 404,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "application/json",
-									"description": "",
-									"type": "text"
-								}
-							],
-							"cookie": [],
-							"body": "{\n  \"statusCode\": 404,\n  \"message\": \"The country with the given id was not found\"\n}\n"
-						}
-					]
-				},
-				{
-					"name": "Update ciudades of a país",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "[\n   {\n       \"id\": \"{{ciudad_id_2}}\"\n   }\n]\n",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{baseUrl}}/paises/{{alpha2}}/ciudades",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"paises",
-								"{{alpha2}}",
-								"ciudades"
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "Update ciudades of a país",
-							"originalRequest": {
-								"method": "PUT",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "[\n   {\n       \"id\": \"{{ciudad_id_2}}\"\n   }\n]\n",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{baseUrl}}/paises/{{alpha2}}/ciudades",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"paises",
-										"{{alpha2}}",
-										"ciudades"
-									]
-								}
-							},
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "application/json",
-									"description": "",
-									"type": "text"
-								}
-							],
-							"cookie": [],
-							"body": "{\n   \"id\": \"5f95b5b2-6f93-4f1b-a7d5-44a6d5c64e8e\",\n   \"name\": \"Argentina\",\n   \"alpha2\": \"AR\",\n   \"cities\": [\n       {\n           \"id\": \"123e4567-e89b-12d3-a456-426614174001\",\n           \"nombre\": \"Buenos Aires\",\n           \"codigo\": \"BA\"\n       }\n   ]\n}\n"
-						}
-					]
-				},
-				{
-					"name": "Update invalid ciudad of a país",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "[\n   {\n       \"id\": \"00000000-0000-0000-0000-000000000000\"\n   }\n]\n",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{baseUrl}}/paises/{{alpha2}}/ciudades",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"paises",
-								"{{alpha2}}",
-								"ciudades"
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "Update invalid ciudad of a país",
-							"originalRequest": {
-								"method": "PUT",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "[\n   {\n       \"id\": \"00000000-0000-0000-0000-000000000000\"\n   }\n]\n",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{baseUrl}}/paises/{{alpha2}}/ciudades",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"paises",
-										"{{alpha2}}",
-										"ciudades"
-									]
-								}
-							},
-							"status": "Not Found",
-							"code": 404,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "application/json",
-									"description": "",
-									"type": "text"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"statusCode\": 404,\n    \"message\": \"The ciudad with the given id was not found\"\n}"
-						}
-					]
-				},
-				{
-					"name": "Update ciudad of a invalid país",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "[\n   {\n       \"id\": \"00000000-0000-0000-0000-000000000000\"\n   }\n]\n",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{baseUrl}}/paises/{{alpha2}}/ciudades",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"paises",
-								"{{alpha2}}",
-								"ciudades"
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "Update ciudad of a invalid país",
-							"originalRequest": {
-								"method": "PUT",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "[\n   {\n       \"id\": \"00000000-0000-0000-0000-000000000000\"\n   }\n]\n",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{baseUrl}}/paises/{{alpha2}}/ciudades",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"paises",
-										"{{alpha2}}",
-										"ciudades"
-									]
-								}
-							},
-							"status": "Not Found",
-							"code": 404,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "application/json",
-									"description": "",
-									"type": "text"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"statusCode\": 404,\n    \"message\": \"The country with the given alpha2 was not found\"\n}"
-						}
-					]
-				},
-				{
-					"name": "Delete a ciudad of a country",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "{{baseUrl}}/paises/{{alpha2}}/ciudades",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"paises",
-								"{{alpha2}}",
-								"ciudades"
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "Delete a ciudad of a country",
-							"originalRequest": {
-								"method": "DELETE",
-								"header": [],
-								"url": {
-									"raw": "{{baseUrl}}/paises/{{alpha2}}/ciudades",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"paises",
-										"{{alpha2}}",
-										"ciudades"
-									]
-								}
-							},
-							"code": 204,
-							"_postman_previewlanguage": "Text",
-							"header": [],
-							"cookie": [],
-							"body": ""
-						}
-					]
-				},
-				{
-					"name": "Delete a ciudad of a invalid país",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "{{baseUrl}}/paises/NAN/ciudades/{{id_ciudad}}",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"paises",
-								"NAN",
-								"ciudades",
-								"{{id_ciudad}}"
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "Delete a ciudad of a invalid país",
-							"originalRequest": {
-								"method": "DELETE",
-								"header": [],
-								"url": {
-									"raw": "{{baseUrl}}/paises/NAN/ciudades/{{id_ciudad}}",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"paises",
-										"NAN",
-										"ciudades",
-										"{{id_ciudad}}"
-									]
-								}
-							},
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "application/json",
-									"description": "",
-									"type": "text"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"statusCode\": 404,\n    \"message\": \"The country with the given alpha2 was not found\"\n}"
-						}
-					]
-				},
-				{
-					"name": "Delete a invalid ciudad of a país",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "{{baseUrl}}/paises/123e4567-e89b-12d3-a456-426614174000/ciudades/00000000-0000-0000-0000-000000000000",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"paises",
-								"123e4567-e89b-12d3-a456-426614174000",
-								"ciudades",
-								"00000000-0000-0000-0000-000000000000"
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "Delete a invalid ciudad of a país",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{baseUrl}}/paises/123e4567-e89b-12d3-a456-426614174000/ciudades/00000000-0000-0000-0000-000000000000",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"paises",
-										"123e4567-e89b-12d3-a456-426614174000",
-										"ciudades",
-										"00000000-0000-0000-0000-000000000000"
-									]
-								}
-							},
-							"status": "Not Found",
-							"code": 404,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "application/json",
-									"description": "",
-									"type": "text"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"statusCode\": 404,\n    \"message\": \"The city with the given id was not found\"\n}"
-						}
-					]
-				}
-			]
-		},
-		{
-			"name": "País-CulturaGastronomica",
-			"item": [
-				{
-					"name": "Add a cultura of a País",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"url": {
-							"raw": "{{baseUrl}}/paises/{{alpha2}}/culturas/{{cultura_id}}",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"paises",
-								"{{alpha2}}",
-								"culturas",
-								"{{cultura_id}}"
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "Add a cultura of a País",
-							"originalRequest": {
-								"method": "POST",
-								"header": [],
-								"url": {
-									"raw": "{{baseUrl}}/paises/{{alpha2}}/culturas/{{cultura_id}}",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"paises",
-										"{{alpha2}}",
-										"culturas",
-										"{{cultura_id}}"
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "application/json",
-									"description": "",
-									"type": "text"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"id\": \"48a9ab90-1276-11ed-861d-0242ac120002\",\n    \"nombre\": \"Colombia\",\n    \"alpha2\": \"CO\",\n    \"ciudades\": [\n        {\n            \"id\": 1,\n            \"nombre\": \"Bogotá\",\n            \"codigo\": \"BOG\"\n        },\n        {\n            \"id\": 2,\n            \"nombre\": \"Medellín\",\n            \"codigo\": \"MED\"\n        },\n        {\n            \"id\": 3,\n            \"nombre\": \"Cali\",\n            \"codigo\": \"CLO\"\n        },\n        {\n            \"id\": 4,\n            \"nombre\": \"Barranquilla\",\n            \"codigo\": \"BAQ\"\n        },\n        {\n            \"id\": 5,\n            \"nombre\": \"Cartagena\",\n            \"codigo\": \"CTG\"\n        },\n        {\n            \"id\": 6,\n            \"nombre\": \"Bucaramanga\",\n            \"codigo\": \"BGA\"\n        },\n        {\n            \"id\": 7,\n            \"nombre\": \"Pereira\",\n            \"codigo\": \"PEI\"\n        },\n        {\n            \"id\": 8,\n            \"nombre\": \"Manizales\",\n            \"codigo\": \"MZL\"\n        },\n        {\n            \"id\": 9,\n            \"nombre\": \"Santa Marta\",\n            \"codigo\": \"SMR\"\n        },\n        {\n            \"id\": 10,\n            \"nombre\": \"Cúcuta\",\n            \"codigo\": \"CUC\"\n        }\n    ],\n    \"culturas\": [\n        {\n            \"id\": \"1a2b3c4d-5678-9101-1121-314151617181\",\n            \"nombre\": \"Cultura gastronómica Antioqueña\",\n            \"descripcion\": \"La cultura gastronómica antioqueña se destaca por su cocina abundante y rica en calorías, con platos emblemáticos como la bandeja paisa, que incluye frijoles, arroz, carne molida, chicharrón, huevo frito, y arepa. La comida antioqueña refleja las raíces campesinas y el amor por los ingredientes locales como el maíz y el fríjol.\"\n        },\n        {\n            \"id\": \"2e3f4g5h-6789-1011-1213-141516171819\",\n            \"nombre\": \"Cultura gastronómica Costeña\",\n            \"descripcion\": \"La cultura gastronómica de la Costa Caribe colombiana está marcada por la influencia africana y caribeña, con platos característicos como el sancocho de pescado, el arroz con coco, y las arepas de huevo. Los mariscos y el plátano son ingredientes fundamentales en esta región.\"\n        },\n        {\n            \"id\": \"3h4i5j6k-7891-0112-1314-151617181920\",\n            \"nombre\": \"Cultura gastronómica Valluna\",\n            \"descripcion\": \"La gastronomía del Valle del Cauca es conocida por su sazón única y la diversidad de sus platos, que incluyen el famoso sancocho de gallina, el arroz atollado, y las empanadas vallunas. El uso de ingredientes frescos y el contraste de sabores dulces y salados son distintivos de esta región.\"\n        },\n        {\n            \"id\": \"4j5k6l7m-8910-1121-3141-516171819202\",\n            \"nombre\": \"Cultura gastronómica Santandereana\",\n            \"descripcion\": \"La cultura gastronómica de Santander se caracteriza por platos como la pepitoria, la hormiga culona, y el mute. Es una cocina que conserva tradiciones indígenas y campesinas, utilizando ingredientes como el maíz, la yuca, y el cabro.\"\n        },\n        {\n            \"id\": \"5k6l7m8n-9101-1213-1415-161718192021\",\n            \"nombre\": \"Cultura gastronómica Cundiboyacense\",\n            \"descripcion\": \"La gastronomía cundiboyacense incluye platos emblemáticos como la fritanga, el ajiaco santafereño, y los postres como la cuajada con melao. Es una cocina que refleja la mezcla de tradiciones indígenas con influencias españolas, utilizando ingredientes como la papa, el maíz, y el pollo.\"\n        }\n    ]\n}"
-						}
-					]
-				},
-				{
-					"name": "Add a invalid cultura of a País",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"url": {
-							"raw": "{{baseUrl}}/paises/{{alpha2}}/culturas/00000000-0000-0000-0000-000000000000",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"paises",
-								"{{alpha2}}",
-								"culturas",
-								"00000000-0000-0000-0000-000000000000"
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "Add a invalid cultura of a País",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{baseUrl}}/paises/{{alpha2}}/culturas/00000000-0000-0000-0000-000000000000",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"paises",
-										"{{alpha2}}",
-										"culturas",
-										"00000000-0000-0000-0000-000000000000"
-									]
-								}
-							},
-							"status": "Not Found",
-							"code": 404,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "application/json",
-									"description": "",
-									"type": "text"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"statusCode\": 404,\n    \"message\": \"The gastronomic culture with the given id was not found\"\n}"
-						}
-					]
-				},
-				{
-					"name": "Add a cultura of a invalid País",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"url": {
-							"raw": "{{baseUrl}}/paises/NAN/culturas/{{cultura_id}}",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"paises",
-								"NAN",
-								"culturas",
-								"{{cultura_id}}"
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "Add a cultura of a invalid País",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{baseUrl}}/paises/NAN/culturas/{{cultura_id}}",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"paises",
-										"NAN",
-										"culturas",
-										"{{cultura_id}}"
-									]
-								}
-							},
-							"status": "Not Found",
-							"code": 404,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "application/json",
-									"description": "",
-									"type": "text"
-								}
-							],
-							"cookie": [],
-							"body": "{\n  \"statusCode\": 404,\n  \"message\": \"The country with the given id was not found\"\n}\n"
-						}
-					]
-				},
-				{
-					"name": "Get all culturas of a Pais",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{baseUrl}}/paises/{{alpha2}}/culturas",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"paises",
-								"{{alpha2}}",
-								"culturas"
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "Get all culturas of a Pais",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{baseUrl}}/paises/{{alpha2}}/culturas",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"paises",
-										"{{alpha2}}",
-										"culturas"
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "application/json",
-									"description": "",
-									"type": "text"
-								}
-							],
-							"cookie": [],
-							"body": "[\n    {\n        \"id\": \"68430ab9-24ea-4fe8-a367-26abe2210ae7\",\n        \"nombre\": \"Cultura gastronómica Italiana\",\n        \"descripcion\": \"Si tratamos de imaginarnos la cultura gastronómica italiana, la mayoría de la gente va a pensar en pasta o pizza, espagueti o salchichas. Pero como la mayoría de las tierras antiguas y con una larga historia, Italia tiene una cocina muy variada. Las variaciones regionales no se aprecian en ninguna parte de una forma tan brusca como la diferencia que existe entre la cocina del norte y la cocina del sur de Italia.\",\n        \"productos\": [\n            {\n                \"id\": \"70aec118-897b-4a28-8402-c095d47669c3\",\n                \"nombre\": \"Pasta\",\n                \"descripcion\": \"Un alimento básico en la cocina italiana, hecha de harina de trigo y agua, y a veces huevo.\",\n                \"historia\": \"La pasta tiene una historia milenaria en Italia, con influencias que se remontan a la antigua Roma.\"\n            },\n            {\n                \"id\": \"ae0d91a8-8a5e-45d5-9249-ab057648d52a\",\n                \"nombre\": \"Pizza\",\n                \"descripcion\": \"Un plato tradicional italiano que consiste en una base de masa cubierta con salsa de tomate, queso y otros ingredientes.\",\n                \"historia\": \"La pizza moderna se originó en Nápoles, Italia, en el siglo XVIII.\"\n            }\n        ],\n        \"restaurantes\": [\n            {\n                \"id\": \"8b6a2fcd-0982-4f74-bbd6-c2be676dffca\",\n                \"nombre\": \"Osteria Francescana\",\n                \"ciudad\": \"Módena\",\n                \"pais\": \"Italia\",\n                \"estrellasMichelin\": 3,\n                \"fechaConsecucion\": \"2012-06-01\"\n            }\n        ],\n        \"recetas\": [\n            {\n                \"id\": \"ef26a58c-20d2-4373-8b61-19e31c4bbd44\",\n                \"nombre\": \"Spaghetti alla Carbonara\",\n                \"descripcion\": \"Una clásica receta italiana hecha con huevo, queso, panceta y pimienta negra.\",\n                \"foto\": \"https://example.com/spaghetti-carbonara.jpg\",\n                \"proceso\": \"Cocinar la pasta al dente, mezclar con la panceta cocida, añadir la mezcla de huevo y queso, y servir con pimienta negra.\",\n                \"video\": \"https://example.com/spaghetti-carbonara-video.mp4\"\n            }\n        ]\n    },\n    {\n        \"id\": \"bc6b9f1e-0a77-4818-9c8c-96ba9f3a49a9\",\n        \"nombre\": \"Cultura gastronómica Mexicana\",\n        \"descripcion\": \"La cultura gastronómica mexicana es conocida por su vibrante sabor y su rica historia, combinando ingredientes autóctonos con influencias españolas.\",\n        \"productos\": [\n            {\n                \"id\": \"39856bbd-d823-4873-8ce8-4d097176f802\",\n                \"nombre\": \"Maíz\",\n                \"descripcion\": \"Un grano esencial en la dieta mexicana, usado para hacer tortillas, tamales y más.\",\n                \"historia\": \"El maíz ha sido un alimento básico en México desde la época prehispánica.\"\n            },\n            {\n                \"id\": \"00f387a0-9007-488e-a580-6a314c6bfa27\",\n                \"nombre\": \"Chile\",\n                \"descripcion\": \"Un ingrediente picante utilizado en una variedad de salsas y platos.\",\n                \"historia\": \"Los chiles han sido cultivados en México durante más de 6,000 años.\"\n            }\n        ],\n        \"restaurantes\": [\n            {\n                \"id\": \"e17736a2-7d4c-478a-91d3-297dcb475df1\",\n                \"nombre\": \"Pujol\",\n                \"ciudad\": \"Ciudad de México\",\n                \"pais\": \"México\",\n                \"estrellasMichelin\": 2,\n                \"fechaConsecucion\": \"2017-04-15\"\n            }\n        ],\n        \"recetas\": [\n            {\n                \"id\": \"9ec7ebab-c942-4180-8129-2f8dc7754635\",\n                \"nombre\": \"Tacos al Pastor\",\n                \"descripcion\": \"Unos tacos hechos con carne de cerdo marinada, piña, cebolla y cilantro, servidos en tortillas de maíz.\",\n                \"foto\": \"https://example.com/tacos-al-pastor.jpg\",\n                \"proceso\": \"Marinar la carne, cocinarla en un trompo, cortarla en tiras y servirla en tortillas con piña, cebolla y cilantro.\",\n                \"video\": \"https://example.com/tacos-al-pastor-video.mp4\"\n            }\n        ]\n    }\n]"
-						}
-					]
-				},
-				{
-					"name": "Get a cultura of a País",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{baseUrl}}/paises/{{alpha2}}/culturas/{{cultura_id}}",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"paises",
-								"{{alpha2}}",
-								"culturas",
-								"{{cultura_id}}"
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "Get a cultura of a País",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{baseUrl}}/paises/{{alpha2}}/culturas/{{cultura_id}}",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"paises",
-										"{{alpha2}}",
-										"culturas",
-										"{{cultura_id}}"
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "application/json",
-									"description": "",
-									"type": "text"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"id\": \"68430ab9-24ea-4fe8-a367-26abe2210ae7\",\n    \"nombre\": \"Cultura gastronómica Italiana\",\n    \"descripcion\": \"Si tratamos de imaginarnos la cultura gastronómica italiana, la mayoría de la gente va a pensar en pasta o pizza, espagueti o salchichas. Pero como la mayoría de las tierras antiguas y con una larga historia, Italia tiene una cocina muy variada. Las variaciones regionales no se aprecian en ninguna parte de una forma tan brusca como la diferencia que existe entre la cocina del norte y la cocina del sur de Italia.\",\n    \"productos\": [\n        {\n            \"id\": \"70aec118-897b-4a28-8402-c095d47669c3\",\n            \"nombre\": \"Pasta\",\n            \"descripcion\": \"Un alimento básico en la cocina italiana, hecha de harina de trigo y agua, y a veces huevo.\",\n            \"historia\": \"La pasta tiene una historia milenaria en Italia, con influencias que se remontan a la antigua Roma.\"\n        },\n        {\n            \"id\": \"ae0d91a8-8a5e-45d5-9249-ab057648d52a\",\n            \"nombre\": \"Pizza\",\n            \"descripcion\": \"Un plato tradicional italiano que consiste en una base de masa cubierta con salsa de tomate, queso y otros ingredientes.\",\n            \"historia\": \"La pizza moderna se originó en Nápoles, Italia, en el siglo XVIII.\"\n        }\n    ],\n    \"restaurantes\": [\n        {\n            \"id\": \"8b6a2fcd-0982-4f74-bbd6-c2be676dffca\",\n            \"nombre\": \"Osteria Francescana\",\n            \"ciudad\": \"Módena\",\n            \"pais\": \"Italia\",\n            \"estrellasMichelin\": 3,\n            \"fechaConsecucion\": \"2012-06-01\"\n        }\n    ],\n    \"recetas\": [\n        {\n            \"id\": \"ef26a58c-20d2-4373-8b61-19e31c4bbd44\",\n            \"nombre\": \"Spaghetti alla Carbonara\",\n            \"descripcion\": \"Una clásica receta italiana hecha con huevo, queso, panceta y pimienta negra.\",\n            \"foto\": \"https://example.com/spaghetti-carbonara.jpg\",\n            \"proceso\": \"Cocinar la pasta al dente, mezclar con la panceta cocida, añadir la mezcla de huevo y queso, y servir con pimienta negra.\",\n            \"video\": \"https://example.com/spaghetti-carbonara-video.mp4\"\n        }\n    ]\n}"
-						}
-					]
-				},
-				{
-					"name": "Get an invalid cultura of a País",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{baseUrl}}/paises/{{alpha2}}/culturas/00000000-0000-0000-0000-000000000000",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"paises",
-								"{{alpha2}}",
-								"culturas",
-								"00000000-0000-0000-0000-000000000000"
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "Get an invalid cultura of a País",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{baseUrl}}/paises/{{alpha2}}/culturas/00000000-0000-0000-0000-000000000000",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"paises",
-										"{{alpha2}}",
-										"culturas",
-										"00000000-0000-0000-0000-000000000000"
-									]
-								}
-							},
-							"status": "Not Found",
-							"code": 404,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "application/json",
-									"description": "",
-									"type": "text"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"statusCode\": 404,\n    \"message\": \"The gastronomic culture with the given id was not found\"\n}"
-						}
-					]
-				},
-				{
-					"name": "Update culturas of a País",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "[\n   {\n       \"id\": \"{{cultura_id_2}}\"\n   }\n]\n",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{baseUrl}}/paises/{{alpha2}}/culturas",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"paises",
-								"{{alpha2}}",
-								"culturas"
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "Update culturas of a País",
-							"originalRequest": {
-								"method": "PUT",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "[\n   {\n       \"id\": \"{{cultura_id_2}}\"\n   }\n]\n",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{baseUrl}}/paises/{{alpha2}}/culturas",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"paises",
-										"{{alpha2}}",
-										"culturas"
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "application/json",
-									"description": "",
-									"type": "text"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"id\": \"68430ab9-24ea-4fe8-a367-26abe2210ae7\",\n    \"nombre\": \"Cultura gastronómica Italiana\",\n    \"descripcion\": \"Si tratamos de imaginarnos la cultura gastronómica italiana, la mayoría de la gente va a pensar en pasta o pizza, espagueti o salchichas. Pero como la mayoría de las tierras antiguas y con una larga historia, Italia tiene una cocina muy variada. Las variaciones regionales no se aprecian en ninguna parte de una forma tan brusca como la diferencia que existe entre la cocina del norte y la cocina del sur de Italia.\",\n    \"productos\": [\n        {\n            \"id\": \"70aec118-897b-4a28-8402-c095d47669c3\",\n            \"nombre\": \"Pasta\",\n            \"descripcion\": \"Un alimento básico en la cocina italiana, hecha de harina de trigo y agua, y a veces huevo.\",\n            \"historia\": \"La pasta tiene una historia milenaria en Italia, con influencias que se remontan a la antigua Roma.\"\n        },\n        {\n            \"id\": \"ae0d91a8-8a5e-45d5-9249-ab057648d52a\",\n            \"nombre\": \"Pizza\",\n            \"descripcion\": \"Un plato tradicional italiano que consiste en una base de masa cubierta con salsa de tomate, queso y otros ingredientes.\",\n            \"historia\": \"La pizza moderna se originó en Nápoles, Italia, en el siglo XVIII.\"\n        }\n    ],\n    \"restaurantes\": [\n        {\n            \"id\": \"8b6a2fcd-0982-4f74-bbd6-c2be676dffca\",\n            \"nombre\": \"Osteria Francescana\",\n            \"ciudad\": \"Módena\",\n            \"pais\": \"Italia\",\n            \"estrellasMichelin\": 3,\n            \"fechaConsecucion\": \"2012-06-01\"\n        }\n    ],\n    \"recetas\": [\n        {\n            \"id\": \"ef26a58c-20d2-4373-8b61-19e31c4bbd44\",\n            \"nombre\": \"Spaghetti alla Carbonara\",\n            \"descripcion\": \"Una clásica receta italiana hecha con huevo, queso, panceta y pimienta negra.\",\n            \"foto\": \"https://example.com/spaghetti-carbonara.jpg\",\n            \"proceso\": \"Cocinar la pasta al dente, mezclar con la panceta cocida, añadir la mezcla de huevo y queso, y servir con pimienta negra.\",\n            \"video\": \"https://example.com/spaghetti-carbonara-video.mp4\"\n        }\n    ]\n}"
-						}
-					]
-				},
-				{
-					"name": "Update a invalid cultura of a País",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "[\n   {\n       \"id\": \"{{cultura_id_2}}\"\n   }\n]\n",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{baseUrl}}/paises/{{alpha2}}/culturas",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"paises",
-								"{{alpha2}}",
-								"culturas"
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "Update a invalid cultura of a País",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{baseUrl}}/paises/{{alpha2}}/culturas/00000000-0000-0000-0000-000000000000",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"paises",
-										"{{alpha2}}",
-										"culturas",
-										"00000000-0000-0000-0000-000000000000"
-									]
-								}
-							},
-							"status": "Not Found",
-							"code": 404,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "application/json",
-									"description": "",
-									"type": "text"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"statusCode\": 404,\n    \"message\": \"The gastronomic culture with the given id was not found\"\n}"
-						}
-					]
-				},
-				{
-					"name": "Update a cultura of a invalid País",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"url": {
-							"raw": "{{baseUrl}}/paises/NAN/culturas/{{cultura_id}}",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"paises",
-								"NAN",
-								"culturas",
-								"{{cultura_id}}"
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "Update a cultura of a invalid País",
-							"originalRequest": {
-								"method": "PUT",
-								"header": [],
-								"url": {
-									"raw": "{{baseUrl}}/paises/NAN/culturas/{{cultura_id}}",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"paises",
-										"NAN",
-										"culturas",
-										"{{cultura_id}}"
-									]
-								}
-							},
-							"status": "Not Found",
-							"code": 404,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "application/json",
-									"description": "",
-									"type": "text"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"statusCode\": 404,\n    \"message\": \"The country with the given id was not found\"\n}"
-						}
-					]
-				},
-				{
-					"name": "Delete a cultura of a País",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "{{baseUrl}}/paises/{{alpha2}}/culturas/{{cultura_id}}",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"paises",
-								"{{alpha2}}",
-								"culturas",
-								"{{cultura_id}}"
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "Delete a cultura of a País",
-							"originalRequest": {
-								"method": "DELETE",
-								"header": [],
-								"url": {
-									"raw": "{{baseUrl}}/paises/{{alpha2}}/culturas/{{cultura_id}}",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"paises",
-										"{{alpha2}}",
-										"culturas",
-										"{{cultura_id}}"
-									]
-								}
-							},
-							"status": "No Content",
-							"code": 204,
-							"_postman_previewlanguage": "Text",
-							"header": [],
-							"cookie": [],
-							"body": ""
-						}
-					]
-				},
-				{
-					"name": "Delete a invalid cultura of a País",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "{{baseUrl}}/paises/{{alpha2}}/culturas/00000000-0000-0000-0000-000000000000",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"paises",
-								"{{alpha2}}",
-								"culturas",
-								"00000000-0000-0000-0000-000000000000"
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "Delete a invalid cultura of a País",
-							"originalRequest": {
-								"method": "DELETE",
-								"header": [],
-								"url": {
-									"raw": "{{baseUrl}}/paises/NAN/culturas/{{cultura_id}}",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"paises",
-										"NAN",
-										"culturas",
-										"{{cultura_id}}"
-									]
-								}
-							},
-							"status": "Not Found",
-							"code": 404,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "application/json",
-									"description": "",
-									"type": "text"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"statusCode\": 404,\n    \"message\": \"The gastronomic culture with the given id was not found\"\n}"
-						}
-					]
-				},
-				{
-					"name": "Delete a cultura of a invalid País",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "{{baseUrl}}/paises/NAN/culturas/{{cultura_id}}",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"paises",
-								"NAN",
-								"culturas",
-								"{{cultura_id}}"
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "Delete a cultura of a invalid País",
-							"originalRequest": {
-								"method": "DELETE",
-								"header": [],
-								"url": {
-									"raw": "{{baseUrl}}/paises/NAN/culturas/{{cultura_id}}",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"paises",
-										"NAN",
-										"culturas",
-										"{{cultura_id}}"
-									]
-								}
-							},
-							"status": "Not Found",
-							"code": 404,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "application/json",
-									"description": "",
-									"type": "text"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"statusCode\": 404,\n    \"message\": \"The city with the given id was not found\"\n}"
 						}
 					]
 				}

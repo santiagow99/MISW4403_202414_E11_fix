@@ -5,13 +5,18 @@ import { Repository } from 'typeorm';
 import { TypeOrmTestingConfig } from '../shared/testing-utils/typeorm-testing-config';
 import { RestauranteEntity } from './restaurante.entity';
 import { RestauranteService } from './restaurante.service';
-
+import { CiudadEntity } from '../ciudad/ciudad.entity';
+import { CulturaEntity } from '../cultura/cultura.entity';
 import { faker } from '@faker-js/faker';
 
 describe('RestauranteService', () => {
   let service: RestauranteService;
   let repository: Repository<RestauranteEntity>;
+  let ciudadRepository: Repository<CiudadEntity>;
+  let culturaRepository: Repository<CulturaEntity>;
   let restaurantesList: RestauranteEntity[];
+  let ciudad: CiudadEntity;
+  let cultura: CulturaEntity;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
@@ -23,17 +28,40 @@ describe('RestauranteService', () => {
     repository = module.get<Repository<RestauranteEntity>>(
       getRepositoryToken(RestauranteEntity),
     );
+    ciudadRepository = module.get<Repository<CiudadEntity>>(
+      getRepositoryToken(CiudadEntity),
+    );
+    culturaRepository = module.get<Repository<CulturaEntity>>(
+      getRepositoryToken(CulturaEntity),
+    );
     await seedDatabase();
   });
 
   const seedDatabase = async () => {
     repository.clear();
+    ciudadRepository.clear();
+    culturaRepository.clear();
+
+    // Create a sample city and culture
+    ciudad = await ciudadRepository.save({
+      nombre: faker.location.city(),
+      codigo: faker.location.zipCode(),
+    });
+
+    cultura = await culturaRepository.save({
+      nombre: faker.company.name(),
+      descripcion: faker.lorem.sentence(),
+    });
+
+    // Seed restaurants with relations to the city and culture
     restaurantesList = [];
     for (let i = 0; i < 5; i++) {
       const restaurante: RestauranteEntity = await repository.save({
         nombre: faker.company.name(),
         estrellasMichelin: '1',
         fechaConsecuencion: faker.date.past(),
+        ciudad: ciudad,
+        culturas: [cultura],
       });
       restaurantesList.push(restaurante);
     }
@@ -85,8 +113,8 @@ describe('RestauranteService', () => {
       nombre: faker.company.name(),
       estrellasMichelin: '1',
       fechaConsecuencion: faker.date.past(),
-      culturas: [],
-      restaurante: null,
+      culturas: [cultura],
+      ciudad: ciudad,
     };
 
     const newRestaurante: RestauranteEntity = await service.create(restaurante);
@@ -94,6 +122,7 @@ describe('RestauranteService', () => {
 
     const storedRestaurante: RestauranteEntity = await repository.findOne({
       where: { id: newRestaurante.id },
+      relations: ['ciudad', 'culturas'],
     });
 
     expect(storedRestaurante).not.toBeNull();
@@ -101,6 +130,8 @@ describe('RestauranteService', () => {
     expect(storedRestaurante.estrellasMichelin).toEqual(
       newRestaurante.estrellasMichelin,
     );
+    expect(storedRestaurante.ciudad.nombre).toEqual(ciudad.nombre);
+    expect(storedRestaurante.culturas[0].nombre).toEqual(cultura.nombre);
 
     const expectedDate = new Date(storedRestaurante.fechaConsecuencion)
       .toISOString()
@@ -125,6 +156,7 @@ describe('RestauranteService', () => {
 
     const storedRestaurante: RestauranteEntity = await repository.findOne({
       where: { id: restaurante.id },
+      relations: ['ciudad', 'culturas'],
     });
     expect(storedRestaurante).not.toBeNull();
     expect(storedRestaurante.nombre).toEqual(restaurante.nombre);

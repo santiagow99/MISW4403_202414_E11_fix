@@ -13,12 +13,4 @@ export class ProductoDto {
   @IsString()
   @IsNotEmpty()
   readonly historia: string;
-
-  @IsArray()
-  @IsString({ each: true })
-  readonly culturaIds: string[];
-
-  @IsString()
-  @IsNotEmpty()
-  readonly categoriaId: string;
 }

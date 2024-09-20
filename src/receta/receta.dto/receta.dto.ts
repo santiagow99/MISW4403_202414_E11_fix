@@ -20,8 +20,4 @@ export class RecetaDto {
   @IsUrl()
   @IsOptional()
   readonly video?: string;
-
-  @IsString()
-  @IsNotEmpty()
-  readonly culturaId: string;
 }

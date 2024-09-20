@@ -26,5 +26,5 @@ export class RestauranteEntity {
   culturas: CulturaEntity[];
 
   @ManyToOne(() => CiudadEntity, (ciudad) => ciudad.restaurantes)
-  restaurante: RestauranteEntity;
+  ciudad: CiudadEntity;
 }

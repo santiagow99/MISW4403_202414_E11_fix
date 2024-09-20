@@ -19,7 +19,7 @@ export class CiudadEntity {
   @Column()
   codigo: string;
 
-  @OneToMany(() => RestauranteEntity, (restaurante) => restaurante.restaurante)
+  @OneToMany(() => RestauranteEntity, (restaurante) => restaurante.ciudad)
   restaurantes: RestauranteEntity[];
 
   @ManyToOne(() => PaisEntity, (pais) => pais.ciudades)

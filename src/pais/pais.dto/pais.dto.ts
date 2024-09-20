@@ -9,12 +9,4 @@ export class PaisDto {
   @IsString()
   @IsNotEmpty()
   readonly alpha2: string;
-
-  @IsArray()
-  @IsString({ each: true })
-  readonly culturaIds: string[];
-
-  @IsArray()
-  @IsString({ each: true })
-  readonly ciudadIds: string[];
 }

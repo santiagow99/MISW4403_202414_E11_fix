@@ -9,8 +9,4 @@ export class CiudadDto {
   @IsString()
   @IsNotEmpty()
   readonly codigo: string;
-
-  @IsString()
-  @IsNotEmpty()
-  readonly paisId: string;
 }

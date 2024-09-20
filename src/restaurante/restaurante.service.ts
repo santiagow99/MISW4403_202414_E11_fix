@@ -14,17 +14,19 @@ export class RestauranteService {
     private readonly restauranteRepository: Repository<RestauranteEntity>,
   ) {}
 
+  // Find all restaurants with their related cultures and city
   async findAll(): Promise<RestauranteEntity[]> {
     return await this.restauranteRepository.find({
-      relations: ['culturas', 'restaurante'],
+      relations: ['culturas', 'ciudad'], // Updated relation 'ciudad'
     });
   }
 
+  // Find one restaurant by ID, including cultures and city
   async findOne(id: string): Promise<RestauranteEntity> {
     const restaurante: RestauranteEntity =
       await this.restauranteRepository.findOne({
         where: { id },
-        relations: ['culturas', 'restaurante'],
+        relations: ['culturas', 'ciudad'], // Updated relation 'ciudad'
       });
     if (!restaurante)
       throw new BusinessLogicException(
@@ -35,10 +37,12 @@ export class RestauranteService {
     return restaurante;
   }
 
+  // Create a new restaurant
   async create(restaurante: RestauranteEntity): Promise<RestauranteEntity> {
     return await this.restauranteRepository.save(restaurante);
   }
 
+  // Update a restaurant by ID
   async update(
     id: string,
     restaurante: RestauranteEntity,
@@ -57,6 +61,7 @@ export class RestauranteService {
     });
   }
 
+  // Delete a restaurant by ID
   async delete(id: string) {
     const restaurante: RestauranteEntity =
       await this.restauranteRepository.findOne({ where: { id } });

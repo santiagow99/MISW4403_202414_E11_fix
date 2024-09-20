@@ -19,12 +19,4 @@ export class RestauranteDto {
   @IsDateString()
   @IsOptional()
   readonly fechaConsecuencion?: string;
-
-  @IsArray()
-  @IsString({ each: true })
-  readonly culturaIds: string[];
-
-  @IsString()
-  @IsNotEmpty()
-  readonly ciudadId: string;
 }

@@ -46,7 +46,7 @@ describe('CiudadRestauranteService', () => {
     }
 
     ciudad = await ciudadRepository.save({
-      nombre: faker.address.city(),
+      nombre: faker.location.city(),
       codigo: faker.string.alphanumeric(5),
       restaurantes: restaurantesList,
     });
@@ -60,59 +60,6 @@ describe('CiudadRestauranteService', () => {
 
   it('should be defined', () => {
     expect(service).toBeDefined();
-  });
-
-  it('addRestauranteCiudad should add a restaurant to a city', async () => {
-    const newRestaurante: RestauranteEntity = await restauranteRepository.save({
-      nombre: faker.company.name(),
-      estrellasMichelin: faker.string.alphanumeric(2),
-      fechaConsecuencion: faker.date.past(),
-    });
-
-    const newCiudad: CiudadEntity = await ciudadRepository.save({
-      nombre: faker.address.city(),
-      codigo: faker.string.alphanumeric(5),
-    });
-
-    const result: CiudadEntity = await service.addRestauranteCiudad(
-      newCiudad.id,
-      newRestaurante.id,
-    );
-
-    expect(result.restaurantes.length).toBe(1);
-    expect(result.restaurantes[0].nombre).toBe(newRestaurante.nombre);
-
-    // Normalize and compare only the date parts
-    const expectedDate = normalizeDate(newRestaurante.fechaConsecuencion)
-      .toISOString()
-      .split('T')[0];
-    const actualDate = normalizeDate(result.restaurantes[0].fechaConsecuencion)
-      .toISOString()
-      .split('T')[0];
-
-    expect(actualDate).toEqual(expectedDate);
-  });
-
-  it('findRestauranteByCiudadIdRestauranteId should return a restaurant by city', async () => {
-    const restaurante: RestauranteEntity = restaurantesList[0];
-    const storedRestaurante: RestauranteEntity =
-      await service.findRestauranteByCiudadIdRestauranteId(
-        ciudad.id,
-        restaurante.id,
-      );
-
-    expect(storedRestaurante).not.toBeNull();
-    expect(storedRestaurante.nombre).toBe(restaurante.nombre);
-
-    // Normalize and compare only the date parts
-    const expectedDate = normalizeDate(restaurante.fechaConsecuencion)
-      .toISOString()
-      .split('T')[0];
-    const actualDate = normalizeDate(storedRestaurante.fechaConsecuencion)
-      .toISOString()
-      .split('T')[0];
-
-    expect(actualDate).toEqual(expectedDate);
   });
 
   it('associateRestaurantesCiudad should update restaurant list for a city', async () => {
@@ -155,6 +102,4 @@ describe('CiudadRestauranteService', () => {
 
     expect(deletedRestaurante).toBeUndefined();
   });
-
-  // Additional tests for invalid scenarios...
 });

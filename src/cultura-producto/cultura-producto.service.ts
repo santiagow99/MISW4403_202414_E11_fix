@@ -18,7 +18,6 @@ export class CulturaProductoService {
     private readonly productoRepository: Repository<ProductoEntity>,
   ) {}
 
-  // Add a product to a culture
   async addProductoCultura(
     culturaId: string,
     productoId: string,
@@ -48,7 +47,6 @@ export class CulturaProductoService {
     return await this.culturaRepository.save(cultura);
   }
 
-  // Find a specific product by culture id and product id
   async findProductoByCulturaIdProductoId(
     culturaId: string,
     productoId: string,
@@ -87,7 +85,6 @@ export class CulturaProductoService {
     return culturaProducto;
   }
 
-  // Find all products associated with a culture
   async findProductosByCulturaId(culturaId: string): Promise<ProductoEntity[]> {
     const cultura: CulturaEntity = await this.culturaRepository.findOne({
       where: { id: culturaId },
@@ -103,7 +100,6 @@ export class CulturaProductoService {
     return cultura.productos;
   }
 
-  // Associate multiple products with a culture
   async associateProductosCultura(
     culturaId: string,
     productos: ProductoEntity[],
@@ -135,7 +131,6 @@ export class CulturaProductoService {
     return await this.culturaRepository.save(cultura);
   }
 
-  // Remove a product from a culture
   async deleteProductoCultura(culturaId: string, productoId: string) {
     const producto: ProductoEntity = await this.productoRepository.findOne({
       where: { id: productoId },
